@@ -1,4 +1,4 @@
-package com.product.evaluate.config;
+package com.evaluate.config;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

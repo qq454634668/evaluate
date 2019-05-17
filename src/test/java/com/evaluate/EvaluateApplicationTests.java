@@ -1,4 +1,4 @@
-package com.product.evaluate;
+package com.evaluate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.product.evaluate.license;
+package com.evaluate.license;
 
 import de.schlichtherle.license.*;
 import org.springframework.beans.factory.annotation.Autowired;

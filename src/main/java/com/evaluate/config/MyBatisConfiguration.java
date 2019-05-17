@@ -1,4 +1,4 @@
-package com.product.evaluate.config;
+package com.evaluate.config;
 
 import com.github.pagehelper.PageHelper;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.product.evaluate.config;
+package com.evaluate.config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

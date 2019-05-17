@@ -1,4 +1,4 @@
-package com.product.evaluate.license;
+package com.evaluate.license;
 
 import groovy.util.logging.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

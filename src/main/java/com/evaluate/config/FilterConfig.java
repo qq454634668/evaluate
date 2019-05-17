@@ -1,8 +1,8 @@
-package com.product.evaluate.config;
+package com.evaluate.config;
 
 
 
-import com.product.evaluate.license.LicenseFilter;
+import com.evaluate.license.LicenseFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
