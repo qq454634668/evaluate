@@ -5,7 +5,7 @@
     <resultMap id="test" type="java.util.Map">
         <result column="ID" property="id"/>
     </resultMap>
-    <insert id="quotaMapper" parameterMap="java.util.Map">
+    <insert id="quotaMapper" parameterType="java.util.Map">
         insert into yuyi_evaluate_criterion
                      (parent_id,name,standard)
                       VALUES

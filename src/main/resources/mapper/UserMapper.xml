@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evaluate.mapper.UserMapper">
+    <resultMap id="UserList" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="FIRST_NAME" property="first_name"/>
+        <result column="EMAIL" property="email"/>
+        <result column="ROLENAME" property="rolename"/>
+        <result column="ROLE_ID" property="role_id"/>
+    </resultMap>
+    <resultMap id="tokenList" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="TOKEN" property="token"/>
+        <result column="SCSJ" property="scsj"/>
+        <result column="USER_ID" property="user_id"/>
+    </resultMap>
+    <select id="user" parameterType="java.util.Map" resultMap="UserList">
+        select t.id,t.first_name,t.email,
+	          (select name from yuyi_evaluate_user_roles a where a.id = t.role_id) rolename,
+                t.role_id
+	          from yuyi_evaluate_users t where login =#{username} and password =#{password}
+    </select>
+    <select id="getUserInfoId" parameterType="java.util.Map" resultMap="tokenList">
+          select * from token t where t.token =#{token}
+    </select>
+    <insert id="insertToken" parameterType="java.util.Map">
+        insert into token (token,scsj,user_id) values (#{token},#{scsj},#{user_id})
+    </insert>
+</mapper>

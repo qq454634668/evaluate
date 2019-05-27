@@ -2,7 +2,9 @@ package com.evaluate.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +13,8 @@ import java.util.Map;
  * 指标管理
  */
 @Controller
-public class quotaController {
+@CrossOrigin
+public class QuotaController {
     /**
      * 增加指标
      * parent_id  一级指标 0    二三级指标为上级ID
@@ -21,6 +24,7 @@ public class quotaController {
      */
 
     @RequestMapping("/daily/addQuota")
+    @ResponseBody
     public Map<String,Object> addQuota(){
         Map<String,Object> result = new HashMap<>();
         return result;
