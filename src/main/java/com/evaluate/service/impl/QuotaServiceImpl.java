@@ -23,7 +23,7 @@ public class QuotaServiceImpl implements QuotaService {
 
     @Override
     @Transactional
-    public void quotaMapper(Map<String, Object> param) {
+    public void addQuota(Map<String, Object> param) {
         int flag = quotaMapper.addQuota(param);
         if(flag <= 0){
             throw new RuntimeException("添加失败");

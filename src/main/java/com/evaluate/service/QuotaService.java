@@ -7,5 +7,5 @@ public interface QuotaService {
     /**
      *增加指标
      */
-    void quotaMapper(Map<String, Object> param);
+    void addQuota(Map<String, Object> param);
 }

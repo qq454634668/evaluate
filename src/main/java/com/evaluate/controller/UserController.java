@@ -134,10 +134,10 @@ public class UserController {
                     Map<String,Object> userInfo = userInfoList.get(0);
                     Object roleId = userInfo.get("role_id");
                     map.put("userInfo",userInfo);
-                    //查询权限下菜单
-                    param.put("roleId",roleId);
-                    List<Map<String, Object>> menuInfo = userService.menuInfo(param);
-                    map.put("menuInfo",menuInfo);
+//                    //查询权限下菜单
+//                    param.put("roleId",roleId);
+//                    List<Map<String, Object>> menuInfo = userService.menuInfo(param);
+//                    map.put("menuInfo",menuInfo);
                     result.put("data",map);
                     result.put("message","用户信息获取成功");
                     result.put("code","200");
