@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class QuotaServiceImpl implements QuotaService {
 
     @Resource
@@ -22,11 +23,18 @@ public class QuotaServiceImpl implements QuotaService {
 
 
     @Override
-    @Transactional
     public void addQuota(Map<String, Object> param) {
         int flag = quotaMapper.addQuota(param);
         if(flag <= 0){
             throw new RuntimeException("添加失败");
+        }
+    }
+
+    @Override
+    public void editQuota(Map<String, Object> param) {
+        int flag = quotaMapper.editQuota(param);
+        if(flag <= 0){
+            throw new RuntimeException("修改失败");
         }
     }
 
