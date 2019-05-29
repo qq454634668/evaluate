@@ -12,6 +12,10 @@
                     (#{parent_id},#{name},#{standard},#{initial},#{type})
     </insert>
     <update id="editQuota" parameterType="java.util.Map">
-        update yuyi_evaluate_criterion  set name = #{name},standard =#{standard} where id = #{id}
+        update yuyi_evaluate_criterion  set name = #{name},
+                                          standard =#{standard},
+                                          initial =#{initial},
+                                          type = #{type}
+         where id = #{id}
     </update>
 </mapper>
