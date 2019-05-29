@@ -10,4 +10,6 @@ public interface QuotaService {
     void addQuota(Map<String, Object> param);
     //修改指标
     void editQuota(Map<String, Object> param);
+    //删除指标
+    void delQuota(Map<String, Object> param);
 }

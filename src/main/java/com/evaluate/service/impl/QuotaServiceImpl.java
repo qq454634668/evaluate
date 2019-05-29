@@ -38,5 +38,13 @@ public class QuotaServiceImpl implements QuotaService {
         }
     }
 
+    @Override
+    public void delQuota(Map<String, Object> param) {
+        int flag = quotaMapper.delQuota(param);
+        if(flag <= 0){
+            throw new RuntimeException("删除失败");
+        }
+    }
+
 
 }
