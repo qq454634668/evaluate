@@ -7,9 +7,9 @@
     </resultMap>
     <insert id="quotaMapper" parameterType="java.util.Map">
         insert into yuyi_evaluate_criterion
-                     (parent_id,name,standard)
+                     (parent_id,name,standard,initial,type)
                       VALUES
-                    (#{parent_id},#{name},#{standard})
+                    (#{parent_id},#{name},#{standard},#{initial},#{type})
     </insert>
     <update id="editQuota" parameterType="java.util.Map">
         update yuyi_evaluate_criterion  set name = #{name},standard =#{standard} where id = #{id}

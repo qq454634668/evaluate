@@ -24,19 +24,24 @@ public class QuotaController {
      * 增加指标
      * parent_id  一级指标 0    二三级指标为上级ID
      * standard  参考分值
+     * initial   初始值
      * name 指标（内容）
+     * type      评分方式 默认 0,1是加分
      * insert into yuyi_evaluate_criterion (parent_id,name,standard) VALUES (#{parent_id},#{name}，#{standard})
      */
 
     @RequestMapping("/quota/addQuota")
     @ResponseBody
-    public Map<String,Object> addQuota(String parent_id,String standard,String name){
+    public Map<String,Object> addQuota(String parent_id,String standard,
+                                       String name,String initial,String type){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
             param.put("parent_id",parent_id);
             param.put("standard",standard);
             param.put("name",name);
+            param.put("initial",initial);
+            param.put("type",type);
             quotaService.addQuota(param);
             result.put("data",null);
             result.put("message","插入成功");
@@ -83,15 +88,6 @@ public class QuotaController {
      * 指标列表
      */
     /**
-     * 评分项列表
-     */
-    /**
-     * 新增评分项
-     */
-    /**
-     * 修改评分项
-     */
-    /**
-     * 删除评分项
+     * 修改权重
      */
 }
