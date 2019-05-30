@@ -87,5 +87,18 @@ public class QuotaServiceImpl implements QuotaService {
         return oneMenu;
     }
 
+    @Override
+    public void editWeight(String id, String weight) {
+        String[] idList = id.split(",");
+        String[] weightList = weight.split(",");
+        int length = idList.length;
+        for(int i=0;i<length;i++){
+            Map<String,Object> param = new HashMap<>();
+            param.put("weight",weightList[i]);
+            param.put("id",idList[i]);
+            quotaMapper.editWeight(param);
+        }
+    }
+
 
 }

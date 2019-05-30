@@ -129,12 +129,29 @@ public class QuotaController {
         }
         return result;
     }
-    /**
-     * 删除指标
-     * id
-     */
 
     /**
      * 修改权重
+     * weight权重    15,20,30,35
+     * id             1,2,3,4
+     * 顺序一定要对应
      */
+    @RequestMapping("/quota/editWeight")
+    @ResponseBody
+    public Map<String,Object> editWeight(String id,String weight){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            quotaService.editWeight(id,weight);
+            result.put("data",null);
+            result.put("message","修改权重插入成功");
+            result.put("code",200);
+
+        }catch (Exception e){
+            result.put("data",e.getMessage());
+            result.put("message","修改权重插入失败");
+            result.put("code",500);
+        }
+        return result;
+    }
 }

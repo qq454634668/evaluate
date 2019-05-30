@@ -28,4 +28,7 @@
                 from yuyi_evaluate_criterion t
                 where t.parent_id = #{parent_id}
     </select>
+    <update id="editWeight" parameterType="java.util.Map">
+        update yuyi_evaluate_criterion set weight = #{weight} where id = #{id}
+    </update>
 </mapper>
