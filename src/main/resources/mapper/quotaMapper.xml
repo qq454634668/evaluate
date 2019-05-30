@@ -5,13 +5,27 @@
     <resultMap id="test" type="java.util.Map">
         <result column="ID" property="id"/>
     </resultMap>
+    <resultMap id="quotaList" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="PARENT_ID" property="parent_id"/>
+        <result column="NAME" property="name"/>
+        <result column="WEIGHT" property="weight"/>
+        <result column="STANDARD" property="standard"/>
+        <result column="TYPE" property="type"/>
+        <result column="INITIAL" property="initial"/>
+    </resultMap>
     <insert id="quotaMapper" parameterType="java.util.Map">
         insert into yuyi_evaluate_criterion
                      (parent_id,name,standard,initial,type)
                       VALUES
                     (#{parent_id},#{name},#{standard},#{initial},#{type})
     </insert>
-    <delete id="delQuota">
+    <delete id="delQuota" parameterType="java.util.Map">
         delete FROM yuyi_evaluate_criterion where id=#{id}
     </delete>
+    <select id="quotaList" parameterType="java.util.Map" resultMap="quotaList">
+        select t.id,t.parent_id,t.name,t.weight,t.standard,t.type,t.initial
+                from yuyi_evaluate_criterion t
+                where t.parent_id = #{parent_id}
+    </select>
 </mapper>

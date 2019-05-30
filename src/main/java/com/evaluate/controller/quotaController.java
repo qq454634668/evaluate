@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -109,6 +110,30 @@ public class QuotaController {
     /**
      * 指标列表
      */
+    @RequestMapping("/quota/quotaList")
+    @ResponseBody
+    public Map<String,Object> quotaList(String id){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+
+        try{
+            List list = quotaService.quotaList(param);
+            result.put("data",list);
+            result.put("message","指标列表查询成功");
+            result.put("code",200);
+
+        }catch (Exception e){
+            result.put("data",e.getMessage());
+            result.put("message","指标列表查询失败");
+            result.put("code",500);
+        }
+        return result;
+    }
+    /**
+     * 删除指标
+     * id
+     */
+
     /**
      * 修改权重
      */

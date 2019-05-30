@@ -7,4 +7,5 @@ public interface QuotaMapper {
     int addQuota(Map<String,Object> param);
     int editQuota(Map<String,Object> param);
     int delQuota(Map<String,Object> param);
+    List<Map<String,Object>> quotaList(Map<String,Object> param);
 }
