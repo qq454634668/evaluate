@@ -155,25 +155,25 @@ public class UserController {
         return result;
     }
 
-    /**
-     * 退出登录
-     * 不需要接退出登录
-     */
-    @RequestMapping("/QuitLogin")
-    @ResponseBody
-    public Map<String,Object> QuitLogin(HttpSession session){
-        Map<String,Object> result = new HashMap<>();
-        try{
-            session.invalidate();
-            result.put("data",null);
-            result.put("message","退出登录成功");
-            result.put("code","200");
-        }catch (Exception e){
-            result.put("data",null);
-            result.put("message","退出登录失败");
-            result.put("code","500");
-        }
-        return result;
-    }
+//    /**
+//     * 退出登录
+//     * 不需要接退出登录
+//     */
+//    @RequestMapping("/QuitLogin")
+//    @ResponseBody
+//    public Map<String,Object> QuitLogin(HttpSession session){
+//        Map<String,Object> result = new HashMap<>();
+//        try{
+//            session.invalidate();
+//            result.put("data",null);
+//            result.put("message","退出登录成功");
+//            result.put("code","200");
+//        }catch (Exception e){
+//            result.put("data",null);
+//            result.put("message","退出登录失败");
+//            result.put("code","500");
+//        }
+//        return result;
+//    }
 
 }
