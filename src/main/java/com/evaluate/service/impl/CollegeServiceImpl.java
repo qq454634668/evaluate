@@ -20,30 +20,30 @@ public class CollegeServiceImpl implements CollegeService {
 
 
     @Override
-    public List collegeList(Map<String, Object> param,int pageNum, int pageSize) {
+    public List gradeList(Map<String, Object> param,int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
-        return collegeMapper.collegeList(param);
+        return collegeMapper.gradeList(param);
     }
 
     @Override
-    public void addCollege(Map<String, Object> param) {
-        int flag = collegeMapper.addCollege(param);
+    public void addGrade(Map<String, Object> param) {
+        int flag = collegeMapper.addGrade(param);
         if(flag <= 0){
             throw new RuntimeException("添加失败");
         }
     }
 
     @Override
-    public void editCollege(Map<String, Object> param) {
-        int flag = collegeMapper.editCollege(param);
+    public void editGrade(Map<String, Object> param) {
+        int flag = collegeMapper.editGrade(param);
         if(flag <= 0){
             throw new RuntimeException("修改失败");
         }
     }
 
     @Override
-    public void delCollege(Map<String, Object> param) {
-        int flag = collegeMapper.delCollege(param);
+    public void delGrade(Map<String, Object> param) {
+        int flag = collegeMapper.delGrade(param);
         if(flag <= 0){
             throw new RuntimeException("删除失败");
         }

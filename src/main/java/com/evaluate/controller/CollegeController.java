@@ -4,6 +4,8 @@ import com.evaluate.service.CollegeService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -23,14 +25,16 @@ public class CollegeController {
     @Resource
     private CollegeService collegeService;
     /**
-     * 学校列表
+     * 学级列表
       */
-    public Map<String,Object> collegeList(HttpServletRequest request,int pageNum,int pageSize){
+    @ResponseBody
+    @RequestMapping("/college/gradeList")
+    public Map<String,Object> gradeList(HttpServletRequest request,int pageNum,int pageSize){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         List<Map<String,Object>> list=new ArrayList<>();
         try{
-            list = collegeService.collegeList(param,pageNum,pageSize);
+            list = collegeService.gradeList(param,pageNum,pageSize);
             PageInfo<Map<String,Object>> pageList = new PageInfo<>(list);
             result.put("data",pageList);
             result.put("message","学校列表查询成功");
@@ -47,13 +51,15 @@ public class CollegeController {
      * 添加学级
      * grade  学级
      */
-    public Map<String,Object> addGrades(HttpServletRequest request){
+    @ResponseBody
+    @RequestMapping("/college/addGrade")
+    public Map<String,Object> addGrade(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
             String grade = request.getParameter("grade");
             param.put("grade",grade);
-            collegeService.addCollege(param);
+            collegeService.addGrade(param);
             result.put("data",null);
             result.put("message","添加学级查询成功");
             result.put("code","200");
@@ -70,7 +76,9 @@ public class CollegeController {
      * grade 年级
      * id
      */
-    public Map<String,Object> editCollege(HttpServletRequest request){
+    @ResponseBody
+    @RequestMapping("/college/editGrade")
+    public Map<String,Object> editGrade(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
@@ -78,7 +86,7 @@ public class CollegeController {
             String id = request.getParameter("id");
             param.put("grade",grade);
             param.put("id",id);
-            collegeService.editCollege(param);
+            collegeService.editGrade(param);
             result.put("data",null);
             result.put("message","修改学级查询成功");
             result.put("code","200");
@@ -94,13 +102,15 @@ public class CollegeController {
      * 删除学级
      * id
      */
-    public Map<String,Object> delCollege(HttpServletRequest request){
+    @ResponseBody
+    @RequestMapping("/college/delGrade")
+    public Map<String,Object> delGrade(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
             String id = request.getParameter("id");
             param.put("id",id);
-            collegeService.delCollege(param);
+            collegeService.delGrade(param);
             result.put("data",null);
             result.put("message","删除学级查询成功");
             result.put("code","200");
@@ -116,6 +126,85 @@ public class CollegeController {
 
 
     /*------------------------------科系与专业管理  start--------------------------------*/
+    /**
+     * 科系列表
+     */
+    @ResponseBody
+    @RequestMapping("/college/specialtyList")
+    public Map<String,Object> specialtyList(HttpServletRequest request,int pageNum,int pageSize){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        List<Map<String,Object>> list=new ArrayList<>();
+        try{
+//            list = collegeService.collegeList(param,pageNum,pageSize);
+            PageInfo<Map<String,Object>> pageList = new PageInfo<>(list);
+            result.put("data",pageList);
+            result.put("message","学校列表查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","学校列表查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
 
+    /**
+     * 增加科系
+     */
+    @ResponseBody
+    @RequestMapping("/college/addSpecialty")
+    public Map<String,Object> addSpecialty(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            result.put("data",null);
+            result.put("message","添加学级查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","添加学级查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+    /**
+     * 修改科系
+     */
+    @ResponseBody
+    @RequestMapping("/college/editSpecialty")
+    public Map<String,Object> editSpecialty(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            result.put("data",null);
+            result.put("message","修改学级查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","修改学级查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+    /**
+     * 删除科系
+     */
+    @ResponseBody
+    @RequestMapping("/college/delSpecialty")
+    public Map<String,Object> delSpecialty(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            result.put("data",null);
+            result.put("message","删除学级查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","删除学级查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
     /*------------------------------科系与专业管理  end--------------------------------*/
 }

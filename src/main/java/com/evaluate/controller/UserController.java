@@ -103,7 +103,7 @@ public class UserController {
      * 验证token时效性
      * token
      */
-    @RequestMapping("/InitInfo")
+    @RequestMapping("/user/InitInfo")
     @ResponseBody
     public Map<String,Object> InitInfo(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();

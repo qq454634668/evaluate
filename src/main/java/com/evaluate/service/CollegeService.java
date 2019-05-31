@@ -6,11 +6,11 @@ import java.util.Map;
 
 public interface CollegeService {
     //学校列表
-    List collegeList(Map<String,Object> param,int pageNum, int pageSize);
+    List gradeList(Map<String,Object> param,int pageNum, int pageSize);
     //增加学院
-    void addCollege(Map<String,Object> param);
+    void addGrade(Map<String,Object> param);
     //修改学院
-    void editCollege(Map<String,Object> param);
+    void editGrade(Map<String,Object> param);
     //删除学院
-    void delCollege(Map<String,Object> param);
+    void delGrade(Map<String,Object> param);
 }
