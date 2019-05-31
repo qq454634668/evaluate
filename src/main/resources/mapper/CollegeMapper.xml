@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evaluate.mapper.CollegeMapper">
+    <resultMap id="collegeMap" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="GRADE" property="grade"/>
+        <result column="CREATED_AT" property="created_at"/>
+        <result column="UPDATED_AT" property="updated_at"/>
+        <result column="LEAVE" property="leave"/>
+    </resultMap>
+    <insert id="addCollege" parameterType="java.util.Map">
+        insert into yuyi_evaluate_grade (grade) values (#{grade})
+    </insert>
+    <update id="editCollege" parameterType="java.util.Map">
+        update yuyi_evaluate_grade set grade = #{grade} where id = #{id}
+    </update>
+    <select id="collegeList" parameterType="java.util.Map" resultMap="collegeMap">
+        select id,grade,created_at,updated_at,leave from yuyi_evaluate_grade t
+    </select>
+    <delete id="delCollege" parameterType="java.util.Map">
+        delete from yuyi_evaluate_grade where id=#{id}
+    </delete>
+</mapper>
