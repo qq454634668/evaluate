@@ -18,6 +18,18 @@
         <result column="SPECIALTY" property="specialty"/>
         <result column="PARENT_ID" property="parent_id"/>
     </resultMap>
+    <resultMap id="teamMap" type="java.util.Map">
+        <result column="ID" property="department_id"/>
+        <result column="DEPARTMENT" property="department"/>
+        <result column="SPECIALTY_ID" property="specialty_id"/>
+        <result column="SPECIALTY" property="specialty"/>
+        <result column="TEAM_ID" property="team_id"/>
+        <result column="NAME" property="name"/>
+        <result column="GRADE_ID" property="grade_id"/>
+        <result column="TEACHER_ID" property="teacher_id"/>
+        <result column="FIRST_NAME" property="first_name"/>
+        <result column="GRADE" property="grade"/>
+    </resultMap>
     <insert id="addGrade" parameterType="java.util.Map">
         insert into yuyi_evaluate_grade (grade) values (#{grade})
     </insert>
@@ -45,4 +57,26 @@
     <delete id="delSpecialty" parameterType="java.util.Map">
         delete from yuyi_evaluate_specialty where id=#{id}
     </delete>
+    <select id="teamList" parameterType="java.util.Map" resultMap="teamMap">
+        select * from (
+        select t.*,t3.id team_id,t3.name,t3.grade_id,t3.teacher_id,t4.first_name,t5.grade from (
+        select t1.id department_id,
+                     t1.department,
+                     t2.id specialty_id,
+               t2.parent_id specialty_parent_id,
+               t2.specialty
+                from yuyi_evaluate_department t1,yuyi_evaluate_specialty t2
+        where t1.id = t2.parent_id) t,yuyi_evaluate_team t3,yuyi_evaluate_users t4,yuyi_evaluate_grade t5
+            where t.specialty_id = t3.specialty_id and t.department_id = t3.department_id
+                  and t4.id = t3.teacher_id
+                  and t5.id = t3.grade_id) t where t.specialty_id = #{specialty_id} and grade_id =#{grade_id}
+
+    </select>
+    <select id="gradeList2" parameterType="java.util.Map" resultMap="teamMap">
+        select t.grade_id,t1.grade from yuyi_evaluate_team t,yuyi_evaluate_grade t1 where t.grade_id = t1.id and t.specialty_id = #{specialty_id}
+    </select>
+    <insert id="addTeam" parameterType="java.util.Map">
+        insert into yuyi_evaluate_team (name,department_id, specialty_id, teacher_id, grade_id)
+                                values (#{name},#{department_id},#{specialty_id},#{teacher_id},#{grade_id})
+    </insert>
 </mapper>

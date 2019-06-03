@@ -23,4 +23,8 @@ public interface CollegeService {
     void delSpecialty(Map<String,Object> param);
     //科系列表
     List departmentList(Map<String,Object> param);
+    //班级列表
+    List teamList(Map<String,Object> param);
+    //添加班级
+    void addTeam(Map<String,Object> param);
 }

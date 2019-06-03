@@ -239,4 +239,61 @@ public class CollegeController {
     }
     /*------------------------------科系与专业管理  end--------------------------------*/
 
+    /*------------------------------    班级管理  start--------------------------------*/
+    /**
+     * 班级列表
+     * specialty_parent_id  科目ID yuyi_evaluate_department表ID
+     * grade_id 年级ID
+     * http://localhost:8080/college/teamList?specialty_parent_id=20&grade_id=5
+     */
+    @ResponseBody
+    @RequestMapping("/college/teamList")
+    public Map<String,Object> teamList(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("specialty_parent_id",request.getParameter("specialty_parent_id"));
+            param.put("grade_id",request.getParameter("grade_id"));
+            result.put("data",collegeService.teamList(param));
+            result.put("message","班级列表查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","班级列表查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+    /**
+     * 添加班级
+     * department_id 专业类别ID
+     * specialty_id  专业ID
+     * grade_id      年级ID
+     * name           班级名
+     * teacher_id    班主任ID
+     */
+    @ResponseBody
+    @RequestMapping("/college/addTeam")
+    public Map<String,Object> addTeam(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("department_id",request.getParameter("department_id"));
+            param.put("specialty_id",request.getParameter("specialty_id"));
+            param.put("grade_id",request.getParameter("grade_id"));
+            param.put("name",request.getParameter("name"));
+            param.put("teacher_id",request.getParameter("teacher_id"));
+            collegeService.addTeam(param);
+            result.put("data",null);
+            result.put("message","添加班级成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","添加班级失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+    /*------------------------------    班级管理  end--------------------------------*/
+
 }

@@ -93,4 +93,65 @@ public class CollegeServiceImpl implements CollegeService {
     public List departmentList(Map<String, Object> param) {
         return collegeMapper.departmentList(param);
     }
+
+    @Override
+    public List teamList(Map<String, Object> param) {
+        Object specialty_parent_id =  param.get("specialty_parent_id");
+        List list1 = new ArrayList();
+        if(specialty_parent_id!=null &&specialty_parent_id!=""){
+            Map lsMap = new HashMap();
+            lsMap.put("id",specialty_parent_id);
+            list1.add(0,lsMap);
+        }else{
+            list1 =collegeMapper.departmentList(param);
+        }
+        List oneMenu = new ArrayList<>();
+        for(int i=0;i<list1.size();i++){
+            Map map1= (Map) list1.get(i);
+            Map resultMap1 = new HashMap();
+            param.put("id",map1.get("id").toString());
+            List list2 = new ArrayList();
+            list2 = collegeMapper.specialtyList(param);
+            List twoMenu = new ArrayList<>();
+            for(int a=0;a<list2.size();a++){
+                Map map2= (Map) list2.get(a);
+                Map resultMap2 = new HashMap();
+                param.put("specialty_id",map2.get("id"));
+                Object grade_id =  param.get("grade_id");
+                List list3 = new ArrayList();
+                if(grade_id!=null &&grade_id!=""){
+                    Map lsMap2 = new HashMap();
+                    lsMap2.put("grade_id",grade_id);
+                    list3.add(0,lsMap2);
+                }else{
+                    list3 = collegeMapper.gradeList2(param);
+                }
+                List threeMenu = new ArrayList<>();
+                for(int b=0;b<list3.size();b++){
+                    Map map3 = (Map) list3.get(b);
+                    Map resultMap3 = new HashMap();
+                    param.put("grade_id",map3.get("grade_id"));
+                    List list4 = collegeMapper.teamList(param);
+                    resultMap3.put("mainMenu",map3);
+                    resultMap3.put("sonMenu",list4);
+                    threeMenu.add(b,resultMap3);
+                }
+                resultMap2.put("mainMenu",map2);
+                resultMap2.put("sonMenu",threeMenu);
+                twoMenu.add(a,resultMap2);
+            }
+            resultMap1.put("mainMenu",map1);
+            resultMap1.put("sonMenu",twoMenu);
+            oneMenu.add(i,resultMap1);
+        }
+        return oneMenu;
+    }
+
+    @Override
+    public void addTeam(Map<String, Object> param) {
+        int flag = collegeMapper.addTeam(param);
+        if(flag <= 0){
+            throw new RuntimeException("添加失败");
+        }
+    }
 }

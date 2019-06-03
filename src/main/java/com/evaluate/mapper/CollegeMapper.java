@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 public interface CollegeMapper {
-    //学校列表
+    //学级列表
     List gradeList(Map<String,Object> param);
-    //增加学院
+    //增加学级
     int addGrade(Map<String,Object> param);
-    //修改学院
+    //修改学级
     int editGrade(Map<String,Object> param);
-    //删除学院
+    //删除学级
     int delGrade(Map<String,Object> param);
     //科系列表
     List departmentList(Map<String,Object> param);
@@ -22,5 +22,11 @@ public interface CollegeMapper {
     int editSpecialty(Map<String,Object> param);
     //删除专业
     int delSpecialty(Map<String,Object> param);
+    //班级列表
+    List teamList(Map<String,Object> param);
+    //年级列表根据specialty_id查询
+    List gradeList2(Map<String,Object> param);
+    //添加班级
+    int addTeam(Map<String,Object> param);
 
 }
