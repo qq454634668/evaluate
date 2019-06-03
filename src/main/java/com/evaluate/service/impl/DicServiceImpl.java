@@ -22,5 +22,8 @@ public class DicServiceImpl implements DicService {
     private DicMapper dicMapper;
 
 
-
+    @Override
+    public List usersList(Map<String, Object> param) {
+        return dicMapper.usersList(param);
+    }
 }
