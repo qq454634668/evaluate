@@ -88,4 +88,9 @@ public class CollegeServiceImpl implements CollegeService {
             throw new RuntimeException("删除失败");
         }
     }
+
+    @Override
+    public List departmentList(Map<String, Object> param) {
+        return collegeMapper.departmentList(param);
+    }
 }

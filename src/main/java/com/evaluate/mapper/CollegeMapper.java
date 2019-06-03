@@ -12,7 +12,7 @@ public interface CollegeMapper {
     int editGrade(Map<String,Object> param);
     //删除学院
     int delGrade(Map<String,Object> param);
-    //学级类型列表
+    //科系列表
     List departmentList(Map<String,Object> param);
     //专业列表
     List specialtyList(Map<String,Object> param);

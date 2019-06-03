@@ -218,5 +218,25 @@ public class CollegeController {
         }
         return result;
     }
+    /**
+     * 科系列表
+     */
+    @ResponseBody
+    @RequestMapping("/college/departmentList")
+    public Map<String,Object> departmentList(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            result.put("data",collegeService.departmentList(param));
+            result.put("message","科系列表查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","科系列表查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
     /*------------------------------科系与专业管理  end--------------------------------*/
+
 }

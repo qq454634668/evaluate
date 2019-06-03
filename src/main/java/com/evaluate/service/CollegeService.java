@@ -21,4 +21,6 @@ public interface CollegeService {
     void editSpecialty(Map<String,Object> param);
     //删除专业
     void delSpecialty(Map<String,Object> param);
+    //科系列表
+    List departmentList(Map<String,Object> param);
 }
