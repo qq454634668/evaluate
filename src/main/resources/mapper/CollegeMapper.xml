@@ -9,6 +9,15 @@
         <result column="UPDATED_AT" property="updated_at"/>
         <result column="LEAVE" property="leave"/>
     </resultMap>
+    <resultMap id="departmentMap" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="DEPARTMENT" property="department"/>
+    </resultMap>
+    <resultMap id="specialtyMap" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="SPECIALTY" property="specialty"/>
+        <result column="PARENT_ID" property="parent_id"/>
+    </resultMap>
     <insert id="addGrade" parameterType="java.util.Map">
         insert into yuyi_evaluate_grade (grade) values (#{grade})
     </insert>
@@ -20,5 +29,20 @@
     </select>
     <delete id="delGrade" parameterType="java.util.Map">
         delete from yuyi_evaluate_grade where id=#{id}
+    </delete>
+    <select id="departmentList" parameterType="java.util.Map" resultMap="departmentMap">
+        select t.id,t.department from yuyi_evaluate_department t
+    </select>
+    <select id="specialtyList" parameterType="java.util.Map" resultMap="specialtyMap">
+        select t.id,t.specialty,t.parent_id from yuyi_evaluate_specialty t where t.parent_id =#{id}
+    </select>
+    <insert id="addSpecialty" parameterType="java.util.Map">
+        insert into yuyi_evaluate_specialty (specialty, parent_id) values (#{specialty},#{specialty})
+    </insert>
+    <update id="editSpecialty" parameterType="java.util.Map">
+        update yuyi_evaluate_specialty set specialty = #{specialty} where id = #{id}
+    </update>
+    <delete id="delSpecialty" parameterType="java.util.Map">
+        delete from yuyi_evaluate_specialty where id=#{id}
     </delete>
 </mapper>

@@ -127,22 +127,19 @@ public class CollegeController {
 
     /*------------------------------科系与专业管理  start--------------------------------*/
     /**
-     * 科系列表
+     * 专业列表
      */
     @ResponseBody
     @RequestMapping("/college/specialtyList")
-    public Map<String,Object> specialtyList(HttpServletRequest request,int pageNum,int pageSize){
+    public Map<String,Object> specialtyList(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
-        List<Map<String,Object>> list=new ArrayList<>();
         try{
-//            list = collegeService.collegeList(param,pageNum,pageSize);
-            PageInfo<Map<String,Object>> pageList = new PageInfo<>(list);
-            result.put("data",pageList);
-            result.put("message","学校列表查询成功");
+            result.put("data",collegeService.specialtyList(param));
+            result.put("message","专业列表查询成功");
             result.put("code","200");
         }catch (Exception e){
-            result.put("message","学校列表查询失败");
+            result.put("message","专业列表查询失败");
             result.put("code","500");
             result.put("data",e.getMessage());
         }
@@ -150,7 +147,9 @@ public class CollegeController {
     }
 
     /**
-     * 增加科系
+     * 增加专业
+     * specialty  专业名
+     * parent_id  父级ID
      */
     @ResponseBody
     @RequestMapping("/college/addSpecialty")
@@ -158,18 +157,25 @@ public class CollegeController {
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
+            String specialty = request.getParameter("specialty");
+            param.put("specialty",specialty);
+            String parent_id = request.getParameter("parent_id");
+            param.put("parent_id",parent_id);
+            collegeService.addSpecialty(param);
             result.put("data",null);
-            result.put("message","添加学级查询成功");
+            result.put("message","添加专业成功");
             result.put("code","200");
         }catch (Exception e){
-            result.put("message","添加学级查询失败");
+            result.put("message","添加专业失败");
             result.put("code","500");
             result.put("data",e.getMessage());
         }
         return result;
     }
     /**
-     * 修改科系
+     * 修改专业
+     * specialty  专业名
+     * id          ID
      */
     @ResponseBody
     @RequestMapping("/college/editSpecialty")
@@ -177,18 +183,22 @@ public class CollegeController {
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
+            param.put("specialty",request.getParameter("specialty"));
+            param.put("id",request.getParameter("id"));
+            collegeService.editSpecialty(param);
             result.put("data",null);
-            result.put("message","修改学级查询成功");
+            result.put("message","修改专业成功");
             result.put("code","200");
         }catch (Exception e){
-            result.put("message","修改学级查询失败");
+            result.put("message","修改专业失败");
             result.put("code","500");
             result.put("data",e.getMessage());
         }
         return result;
     }
     /**
-     * 删除科系
+     * 删除专业
+     * id
      */
     @ResponseBody
     @RequestMapping("/college/delSpecialty")
@@ -196,11 +206,13 @@ public class CollegeController {
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
+            param.put("id",request.getParameter("id"));
+            collegeService.delSpecialty(param);
             result.put("data",null);
-            result.put("message","删除学级查询成功");
+            result.put("message","删除专业成功");
             result.put("code","200");
         }catch (Exception e){
-            result.put("message","删除学级查询失败");
+            result.put("message","删除专业失败");
             result.put("code","500");
             result.put("data",e.getMessage());
         }
