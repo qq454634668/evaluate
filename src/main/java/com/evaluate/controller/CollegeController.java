@@ -342,7 +342,51 @@ public class CollegeController {
         }
         return result;
     }
-
     /*------------------------------    班级管理  end--------------------------------*/
+
+
+    /*------------------------------    学期设置  start--------------------------------*/
+
+    /**
+     * 学期列表
+     */
+    @ResponseBody
+    @RequestMapping("/college/termList")
+    public Map<String,Object> termList(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
+    /**
+     * 增加学期
+     */
+    @ResponseBody
+    @RequestMapping("/college/addTerm")
+    public Map<String,Object> addTerm(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
+    /**
+     * 修改学期
+     */
+    @ResponseBody
+    @RequestMapping("/college/editTerm")
+    public Map<String,Object> editTerm(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
+    /**
+     * 删除学期
+     */
+    @ResponseBody
+    @RequestMapping("/college/delTerm")
+    public Map<String,Object> delTerm(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
+    /*------------------------------    学期设置  end--------------------------------*/
 
 }
