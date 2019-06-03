@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evaluate.mapper.DicMapper">
+    <resultMap id="gradeMap" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="GRADE" property="grade"/>
+        <result column="CREATED_AT" property="created_at"/>
+        <result column="UPDATED_AT" property="updated_at"/>
+        <result column="LEAVE" property="leave"/>
+    </resultMap>
+    <select id="gradeList2" parameterType="java.util.Map" resultMap="gradeMap">
+        select t.grade_id,t1.grade from yuyi_evaluate_team t,yuyi_evaluate_grade t1 where t.grade_id = t1.id and t.specialty_id = #{specialty_id}
+    </select>
+
+</mapper>

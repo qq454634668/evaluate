@@ -79,4 +79,10 @@
         insert into yuyi_evaluate_team (name,department_id, specialty_id, teacher_id, grade_id)
                                 values (#{name},#{department_id},#{specialty_id},#{teacher_id},#{grade_id})
     </insert>
+    <update id="editTeam" parameterType="java.util.Map">
+        update yuyi_evaluate_team set name = #{name},teacher_id=#{teacher_id} where id = #{id}
+    </update>
+    <delete id="delTeam" parameterType="java.util.Map">
+        delete from yuyi_evaluate_team where id=#{id}
+    </delete>
 </mapper>

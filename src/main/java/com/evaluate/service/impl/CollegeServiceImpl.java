@@ -5,6 +5,7 @@ import com.evaluate.mapper.CollegeMapper;
 import com.evaluate.service.CollegeService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class CollegeServiceImpl implements CollegeService {
 
     @Resource
@@ -152,6 +154,22 @@ public class CollegeServiceImpl implements CollegeService {
         int flag = collegeMapper.addTeam(param);
         if(flag <= 0){
             throw new RuntimeException("添加失败");
+        }
+    }
+
+    @Override
+    public void editTeam(Map<String, Object> param) {
+        int flag = collegeMapper.editTeam(param);
+        if(flag <= 0){
+            throw new RuntimeException("修改失败");
+        }
+    }
+
+    @Override
+    public void delTeam(Map<String, Object> param) {
+        int flag = collegeMapper.delTeam(param);
+        if(flag <= 0){
+            throw new RuntimeException("删除失败");
         }
     }
 }

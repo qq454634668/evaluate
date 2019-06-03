@@ -27,4 +27,8 @@ public interface CollegeService {
     List teamList(Map<String,Object> param);
     //添加班级
     void addTeam(Map<String,Object> param);
+    //修改班级
+    void editTeam(Map<String,Object> param);
+    //删除班级
+    void delTeam(Map<String,Object> param);
 }

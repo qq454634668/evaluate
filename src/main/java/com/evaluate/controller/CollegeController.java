@@ -294,6 +294,55 @@ public class CollegeController {
         }
         return result;
     }
+    /**
+     * 修改班级
+     * id
+     * name           班级名
+     * teacher_id    班主任ID
+     */
+    @ResponseBody
+    @RequestMapping("/college/editTeam")
+    public Map<String,Object> editTeam(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("id",request.getParameter("id"));
+            param.put("name",request.getParameter("name"));
+            param.put("teacher_id",request.getParameter("teacher_id"));
+            collegeService.editTeam(param);
+            result.put("data",null);
+            result.put("message","修改班级成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","修改班级失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+    /**
+     * 删除班级
+     * id
+     */
+    @ResponseBody
+    @RequestMapping("/college/delTeam")
+    public Map<String,Object> delTeam(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("id",request.getParameter("id"));
+            collegeService.delTeam(param);
+            result.put("data",null);
+            result.put("message","修改班级成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","修改班级失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+
     /*------------------------------    班级管理  end--------------------------------*/
 
 }

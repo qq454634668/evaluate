@@ -28,5 +28,9 @@ public interface CollegeMapper {
     List gradeList2(Map<String,Object> param);
     //添加班级
     int addTeam(Map<String,Object> param);
+    //修改班级
+    int editTeam(Map<String,Object> param);
+    //删除班级
+    int delTeam(Map<String,Object> param);
 
 }
