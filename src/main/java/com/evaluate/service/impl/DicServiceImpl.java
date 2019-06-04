@@ -2,7 +2,6 @@ package com.evaluate.service.impl;
 
 
 import com.evaluate.mapper.DicMapper;
-import com.evaluate.service.CollegeService;
 import com.evaluate.service.DicService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
@@ -25,5 +24,25 @@ public class DicServiceImpl implements DicService {
     @Override
     public List usersList(Map<String, Object> param) {
         return dicMapper.usersList(param);
+    }
+
+    @Override
+    public List dicGrade(Map<String, Object> param) {
+        return dicMapper.dicGrade(param);
+    }
+
+    @Override
+    public List dicDepartment(Map<String, Object> param) {
+        return dicMapper.dicDepartment(param);
+    }
+
+    @Override
+    public List dicSpecialty(Map<String, Object> param) {
+        return dicMapper.dicSpecialty(param);
+    }
+
+    @Override
+    public List dicTeam(Map<String, Object> param) {
+        return dicMapper.dicTeam(param);
     }
 }

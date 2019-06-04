@@ -9,5 +9,25 @@
     <select id="usersList" parameterType="java.util.Map" resultMap="MbMap">
         select t.id code,t.first_name name from yuyi_evaluate_users t where t.is_activated = '1'
     </select>
+    <select id="dicGrade" parameterType="java.util.Map" resultMap="MbMap">
+        select t.id code,grade name from yuyi_evaluate_grade t order by id desc
+    </select>
+    <select id="dicDepartment" parameterType="java.util.Map" resultMap="MbMap">
+        select t.id code,t.department name from yuyi_evaluate_department t
+    </select>
+    <select id="dicSpecialty" parameterType="java.util.Map" resultMap="MbMap">
+        select t.id code,t.specialty name from yuyi_evaluate_specialty t where t.parent_id = #{parent_id}
+    </select>
+    <select id="dicTeam" parameterType="java.util.Map" resultMap="MbMap">
+        select t.name,t.id code from yuyi_evaluate_team t
+        <where>
+            <if test="specialty_id!=null and specialty_id!=''">
+                t.specialty_id = #{specialty_id}
+            </if>
+            <if test="grade_id!=null and grade_id!=''">
+                and t.grade_id = #{grade_id}
+            </if>
+        </where>
 
+    </select>
 </mapper>

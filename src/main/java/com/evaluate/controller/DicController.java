@@ -44,5 +44,86 @@ public class DicController {
             return result;
 
     }
-
+    /**
+     *选择学级
+     */
+    @ResponseBody
+    @RequestMapping("/dic/dicGrade")
+    public Map<String,Object> dicGrade(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            result.put("data",dicService.dicGrade(param));
+            result.put("message","选择学级查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","选择学级查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+    /**
+     *选择科系
+     */
+    @ResponseBody
+    @RequestMapping("/dic/dicDepartment")
+    public Map<String,Object> dicDepartment(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            result.put("data",dicService.dicDepartment(param));
+            result.put("message","选择科系查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","选择科系查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+    /**
+     *选择专业
+     * id 科系ID
+     */
+    @ResponseBody
+    @RequestMapping("/dic/dicSpecialty")
+    public Map<String,Object> dicSpecialty(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("parent_id",request.getParameter("id"));
+            result.put("data",dicService.dicSpecialty(param));
+            result.put("message","选择专业查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","选择专业查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+    /**
+     *选择班级
+     * grade_id     年级ID
+     * specialty_id 专业ID
+     */
+    @ResponseBody
+    @RequestMapping("/dic/dicTeam")
+    public Map<String,Object> dicTeam(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("grade_id",request.getParameter("grade_id"));
+            param.put("specialty_id",request.getParameter("specialty_id"));
+            result.put("data",dicService.dicTeam(param));
+            result.put("message","选择班级查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","选择班级查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
 }
