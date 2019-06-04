@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,11 +113,11 @@ public class QuotaController {
      */
     @RequestMapping("/quota/quotaList")
     @ResponseBody
-    public Map<String,Object> quotaList(String id){
+    public Map<String,Object> quotaList(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
-            param.put("parent_id",id);
+            param.put("parent_id",request.getParameter("id"));
             List list = quotaService.quotaList(param);
             result.put("data",list);
             result.put("message","指标列表查询成功");
