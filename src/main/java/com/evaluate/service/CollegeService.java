@@ -31,4 +31,12 @@ public interface CollegeService {
     void editTeam(Map<String,Object> param);
     //删除班级
     void delTeam(Map<String,Object> param);
+    //学期列表
+    List termList(Map<String,Object> param);
+    //增加学期
+    void addTerm(Map<String,Object> param);
+    //修改学期
+    void editTerm(Map<String,Object> param);
+    //删除学期
+    void delTerm(Map<String,Object> param);
 }

@@ -32,5 +32,14 @@ public interface CollegeMapper {
     int editTeam(Map<String,Object> param);
     //删除班级
     int delTeam(Map<String,Object> param);
+    //学期列表
+    List termList(Map<String,Object> param);
+    //增加学期
+    int addTerm(Map<String,Object> param);
+    //修改学期
+    int editTerm(Map<String,Object> param);
+    //删除学期
+    int delTerm(Map<String,Object> param);
+
 
 }

@@ -19,7 +19,8 @@
         <result column="PARENT_ID" property="parent_id"/>
     </resultMap>
     <resultMap id="teamMap" type="java.util.Map">
-        <result column="ID" property="department_id"/>
+        <result column="ID" property="id"/>
+        <result column="DEPARTMENT_ID" property="department_id"/>
         <result column="DEPARTMENT" property="department"/>
         <result column="SPECIALTY_ID" property="specialty_id"/>
         <result column="SPECIALTY" property="specialty"/>
@@ -29,6 +30,10 @@
         <result column="TEACHER_ID" property="teacher_id"/>
         <result column="FIRST_NAME" property="first_name"/>
         <result column="GRADE" property="grade"/>
+    </resultMap>
+    <resultMap id="termMap" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="TERM" property="term"/>
     </resultMap>
     <insert id="addGrade" parameterType="java.util.Map">
         insert into yuyi_evaluate_grade (grade) values (#{grade})
@@ -84,5 +89,17 @@
     </update>
     <delete id="delTeam" parameterType="java.util.Map">
         delete from yuyi_evaluate_team where id=#{id}
+    </delete>
+    <select id="termList" parameterType="java.util.Map" resultMap="termMap">
+          select t.id,t.term from yuyi_evaluate_term t order by  id desc
+    </select>
+    <insert id="addTerm" parameterType="java.util.Map">
+        insert into yuyi_evaluate_term (term)   values (#{term})
+    </insert>
+    <update id="editTerm" parameterType="java.util.Map">
+        update yuyi_evaluate_term set term = #{term}  where id = #{id}
+    </update>
+    <delete id="delTerm" parameterType="java.util.Map">
+        delete from yuyi_evaluate_term where id=#{id}
     </delete>
 </mapper>

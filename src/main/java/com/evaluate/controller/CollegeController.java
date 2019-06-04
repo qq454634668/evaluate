@@ -355,16 +355,36 @@ public class CollegeController {
     public Map<String,Object> termList(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
+        try{
+            result.put("data", collegeService.termList(param));
+            result.put("message","学期列表查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","学期列表查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
         return result;
     }
     /**
      * 增加学期
+     * term  学期名
      */
     @ResponseBody
     @RequestMapping("/college/addTerm")
     public Map<String,Object> addTerm(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
+        try{
+            collegeService.addTerm(param);
+            result.put("data", null);
+            result.put("message","增加学期成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","增加学期失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
         return result;
     }
     /**
@@ -375,6 +395,16 @@ public class CollegeController {
     public Map<String,Object> editTerm(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
+        try{
+            collegeService.editTerm(param);
+            result.put("data", null);
+            result.put("message","修改学期成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","修改学期失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
         return result;
     }
     /**
@@ -385,6 +415,16 @@ public class CollegeController {
     public Map<String,Object> delTerm(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
+        try{
+            collegeService.delTerm(param);
+            result.put("data", null);
+            result.put("message","删除学期成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","删除学期失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
         return result;
     }
     /*------------------------------    学期设置  end--------------------------------*/

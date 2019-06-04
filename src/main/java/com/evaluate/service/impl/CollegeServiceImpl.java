@@ -172,4 +172,33 @@ public class CollegeServiceImpl implements CollegeService {
             throw new RuntimeException("删除失败");
         }
     }
+
+    @Override
+    public List termList(Map<String, Object> param) {
+        return collegeMapper.termList(param);
+    }
+
+    @Override
+    public void addTerm(Map<String, Object> param) {
+        int flag = collegeMapper.addTerm(param);
+        if(flag <= 0){
+            throw new RuntimeException("增加失败");
+        }
+    }
+
+    @Override
+    public void editTerm(Map<String, Object> param) {
+        int flag = collegeMapper.editTerm(param);
+        if(flag <= 0){
+            throw new RuntimeException("修改失败");
+        }
+    }
+
+    @Override
+    public void delTerm(Map<String, Object> param) {
+        int flag = collegeMapper.delTerm(param);
+        if(flag <= 0){
+            throw new RuntimeException("删除失败");
+        }
+    }
 }
