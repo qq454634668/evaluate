@@ -116,6 +116,7 @@ public class QuotaController {
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
+            param.put("id",id);
             List list = quotaService.quotaList(param);
             result.put("data",list);
             result.put("message","指标列表查询成功");
