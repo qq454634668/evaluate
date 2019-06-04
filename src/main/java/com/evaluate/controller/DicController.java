@@ -20,6 +20,7 @@ import java.util.Map;
 @Controller
 @CrossOrigin
 public class DicController {
+
     @Resource
     private DicService dicService;
 
@@ -27,7 +28,7 @@ public class DicController {
      * 老师菜单
      */
     @ResponseBody
-    @RequestMapping("/college/delTeam")
+    @RequestMapping("/dic/usersList")
     public Map<String,Object> usersList(HttpServletRequest request){
             Map<String,Object> result = new HashMap<>();
             Map<String,Object> param = new HashMap<>();
