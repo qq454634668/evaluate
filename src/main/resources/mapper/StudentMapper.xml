@@ -2,14 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.evaluate.mapper.StudentMapper">
-    <resultMap id="gradeMap" type="java.util.Map">
+    <resultMap id="stuMap" type="java.util.Map">
         <result column="ID" property="id"/>
+        <result column="IDENTITY" property="identity"/>
+        <result column="NAME" property="name"/>
+        <result column="BIRTHDAY" property="birthday"/>
+        <result column="MOBILE" property="mobile"/>
+        <result column="PARENT" property="parent"/>
+        <result column="PARENTMOBILE" property="parentmobile"/>
+        <result column="SEX" property="sex"/>
+        <result column="TEAM" property="team"/>
         <result column="GRADE" property="grade"/>
-        <result column="CREATED_AT" property="created_at"/>
-        <result column="UPDATED_AT" property="updated_at"/>
-        <result column="LEAVE" property="leave"/>
+        <result column="DEPARTMENT" property="department"/>
+        <result column="SPECIALTY" property="specialty"/>
+        <result column="GRADE_ID" property="grade_id"/>
+        <result column="DEPARTMENT_ID" property="department_id"/>
+        <result column="SPECIALTY_ID" property="specialty_id"/>
+        <result column="TEAM_ID" property="team_id"/>
     </resultMap>
-    <select id="gradeList" parameterType="java.util.Map" resultMap="gradeMap">
-        select id,grade,created_at,updated_at,leave from yuyi_evaluate_grade t
+    <select id="stuList" parameterType="java.util.Map" resultMap="stuMap">
+        select t.id,t.identity,t.name,t.birthday,t.mobile,t.parent,t.parentmobile,
+            (select a.name from dictionary a where a.code =t.sex and a.lx = 'xb') sex,
+            (select a.name from yuyi_evaluate_team a where a.id = t.team_id) team,
+            (select b.grade from yuyi_evaluate_grade b where b.id = t.grade_id) grade,
+            (select c.department from yuyi_evaluate_department c where c.id = t.department_id) department,
+            (select d.specialty from yuyi_evaluate_specialty d where d.id = t.specialty_id) specialty,
+            t.grade_id,t.department_id,t.specialty_id,t.team_id
+              from yuyi_evaluate_student t
+              <where>
+                  <if test="grade_id!=null and grade_id !=''">
+                      and grade_id = #{grade_id}
+                  </if>
+                  <if test="department_id!=null and department_id !=''">
+                      and department_id = #{department_id}
+                  </if>
+                  <if test="specialty_id!=null and specialty_id !=''">
+                      and specialty_id = #{specialty_id}
+                  </if>
+                  <if test="team_id!=null and team_id !=''">
+                      and team_id = #{team_id}
+                  </if>
+              </where>
     </select>
 </mapper>

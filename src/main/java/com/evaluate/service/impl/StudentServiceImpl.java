@@ -22,5 +22,9 @@ public class StudentServiceImpl implements StudentService {
     private StudentMapper studentMapper;
 
 
-
+    @Override
+    public List stuList(Map<String, Object> param, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return studentMapper.stuList(param);
+    }
 }

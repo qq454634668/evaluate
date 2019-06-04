@@ -115,7 +115,6 @@ public class QuotaController {
     public Map<String,Object> quotaList(String id){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
-
         try{
             List list = quotaService.quotaList(param);
             result.put("data",list);
