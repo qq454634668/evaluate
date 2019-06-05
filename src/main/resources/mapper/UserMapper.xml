@@ -27,4 +27,7 @@
     <insert id="insertToken" parameterType="java.util.Map">
         insert into token (token,scsj,user_id) values (#{token},#{scsj},#{user_id})
     </insert>
+    <update id="updateLastTime" parameterType="java.util.Map">
+        update yuyi_evaluate_users set gxsj = '1' where id = #{user_id}
+    </update>
 </mapper>

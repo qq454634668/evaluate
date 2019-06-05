@@ -59,5 +59,10 @@ public class UserServiceImpl implements UserService {
          userMapper.insertToken(param);
     }
 
+    @Override
+    public void updateLastTime(Map<String, Object> param) {
+        userMapper.updateLastTime(param);
+    }
+
 
 }

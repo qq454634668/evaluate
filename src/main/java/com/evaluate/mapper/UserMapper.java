@@ -21,4 +21,6 @@ public interface UserMapper {
      */
     List<Map<String,Object>> UnderMenu(Map<String, Object> param);
     List<Map<String,Object>> getUserInfoId(Map<String, Object> param);
+    //更新最后登录时间
+    void updateLastTime(Map<String, Object> param);
 }

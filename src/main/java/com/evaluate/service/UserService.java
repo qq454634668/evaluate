@@ -25,6 +25,8 @@ public interface UserService {
      * 添加token
      */
     void insertToken(Map<String, Object> param);
+    //更新最后登录时间
+    void updateLastTime(Map<String, Object> param);
 
 
 }
