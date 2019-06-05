@@ -5,6 +5,7 @@ import com.evaluate.mapper.DicMapper;
 import com.evaluate.mapper.SystemMapper;
 import com.evaluate.service.DicService;
 import com.evaluate.service.SystemService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,5 +20,9 @@ public class SystemServiceImpl implements SystemService {
     @Resource
     private SystemMapper systemMapper;
 
-
+    @Override
+    public List usersList(Map<String, Object> param, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return systemMapper.usersList(param);
+    }
 }
