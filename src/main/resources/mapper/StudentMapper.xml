@@ -19,6 +19,7 @@
         <result column="DEPARTMENT_ID" property="department_id"/>
         <result column="SPECIALTY_ID" property="specialty_id"/>
         <result column="TEAM_ID" property="team_id"/>
+        <result column="ORIGIN" property="origin"/>
     </resultMap>
     <select id="stuList" parameterType="java.util.Map" resultMap="stuMap">
         select t.id,t.identity,t.name,t.birthday,t.mobile,t.parent,t.parentmobile,
@@ -27,7 +28,7 @@
             (select b.grade from yuyi_evaluate_grade b where b.id = t.grade_id) grade,
             (select c.department from yuyi_evaluate_department c where c.id = t.department_id) department,
             (select d.specialty from yuyi_evaluate_specialty d where d.id = t.specialty_id) specialty,
-            t.grade_id,t.department_id,t.specialty_id,t.team_id
+            t.grade_id,t.department_id,t.specialty_id,t.team_id,origin
               from yuyi_evaluate_student t
               <where>
                   <if test="grade_id!=null and grade_id !=''">
@@ -43,5 +44,27 @@
                       and team_id = #{team_id}
                   </if>
               </where>
+    </select>
+    <insert id="addStu" parameterType="java.util.Map">
+      insert into yuyi_evaluate_student
+          (identity, name, sex, birthday, nation, card, origin, mobile,
+          team_id, grade_id, department_id, specialty_id, parent, parentmobile,
+           address, password) VALUES
+          (#{identity},#{name},#{sex},#{birthday},#{nation},#{card},#{origin},#{mobile},
+          #{team_id},#{grade_id},#{department_id},#{specialty_id},#{parent},#{parentmobile},
+          #{address},#{password})
+    </insert>
+    <select id="stuOne" parameterType="java.util.Map" resultMap="stuMap">
+        select t.id,t.identity,t.name,t.birthday,t.mobile,t.parent,t.parentmobile,
+        (select a.name from dictionary a where a.code =t.sex and a.lx = 'xb') sex,
+        (select a.name from yuyi_evaluate_team a where a.id = t.team_id) team,
+        (select b.grade from yuyi_evaluate_grade b where b.id = t.grade_id) grade,
+        (select c.department from yuyi_evaluate_department c where c.id = t.department_id) department,
+        (select d.specialty from yuyi_evaluate_specialty d where d.id = t.specialty_id) specialty,
+        t.grade_id,t.department_id,t.specialty_id,t.team_id,origin
+        from yuyi_evaluate_student t
+        <where>
+            id = #{id}
+        </where>
     </select>
 </mapper>

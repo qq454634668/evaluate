@@ -27,4 +27,17 @@ public class StudentServiceImpl implements StudentService {
         PageHelper.startPage(pageNum,pageSize);
         return studentMapper.stuList(param);
     }
+
+    @Override
+    public void addStu(Map<String, Object> param) {
+        int flag = studentMapper.addStu(param);
+        if(flag <= 0){
+            throw new RuntimeException("添加失败");
+        }
+    }
+
+    @Override
+    public List stuOne(Map<String, Object> param) {
+        return studentMapper.stuOne(param);
+    }
 }
