@@ -20,6 +20,8 @@
         <result column="SPECIALTY_ID" property="specialty_id"/>
         <result column="TEAM_ID" property="team_id"/>
         <result column="ORIGIN" property="origin"/>
+        <result column="NATION" property="nation"/>
+        <result column="CARD" property="card"/>
     </resultMap>
     <select id="stuList" parameterType="java.util.Map" resultMap="stuMap">
         select t.id,t.identity,t.name,t.birthday,t.mobile,t.parent,t.parentmobile,
@@ -28,7 +30,7 @@
             (select b.grade from yuyi_evaluate_grade b where b.id = t.grade_id) grade,
             (select c.department from yuyi_evaluate_department c where c.id = t.department_id) department,
             (select d.specialty from yuyi_evaluate_specialty d where d.id = t.specialty_id) specialty,
-            t.grade_id,t.department_id,t.specialty_id,t.team_id,origin
+            t.grade_id,t.department_id,t.specialty_id,t.team_id,card,nation
               from yuyi_evaluate_student t
               <where>
                   <if test="grade_id!=null and grade_id !=''">
@@ -43,17 +45,11 @@
                   <if test="team_id!=null and team_id !=''">
                       and team_id = #{team_id}
                   </if>
+                  <if test="key!=null and key !=''">
+                      and (t.name like #{key} or t.card like #{key})
+                  </if>
               </where>
     </select>
-    <insert id="addStu" parameterType="java.util.Map">
-      insert into yuyi_evaluate_student
-          (identity, name, sex, birthday, nation, card, origin, mobile,
-          team_id, grade_id, department_id, specialty_id, parent, parentmobile,
-           address, password) VALUES
-          (#{identity},#{name},#{sex},#{birthday},#{nation},#{card},#{origin},#{mobile},
-          #{team_id},#{grade_id},#{department_id},#{specialty_id},#{parent},#{parentmobile},
-          #{address},#{password})
-    </insert>
     <select id="stuOne" parameterType="java.util.Map" resultMap="stuMap">
         select t.id,t.identity,t.name,t.birthday,t.mobile,t.parent,t.parentmobile,
         (select a.name from dictionary a where a.code =t.sex and a.lx = 'xb') sex,
@@ -67,4 +63,20 @@
             id = #{id}
         </where>
     </select>
+    <insert id="addStu" parameterType="java.util.Map">
+      insert into yuyi_evaluate_student
+          (identity, name, sex, birthday, nation, card, origin, mobile,
+          team_id, grade_id, department_id, specialty_id, parent, parentmobile,
+           address, password) VALUES
+          (#{identity},#{name},#{sex},#{birthday},#{nation},#{card},#{origin},#{mobile},
+          #{team_id},#{grade_id},#{department_id},#{specialty_id},#{parent},#{parentmobile},
+          #{address},#{password})
+    </insert>
+    <update id="editStu" parameterType="java.util.Map">
+        update yuyi_evaluate_student set identity =#{identity},name =#{name},sex =#{sex},
+        birthday =#{birthday},nation =#{nation},card =#{card},origin =#{origin},mobile =#{mobile},
+        team_id =#{team_id},grade_id =#{grade_id},department_id =#{department_id},specialty_id =#{specialty_id},
+        identity =#{identity},parent =#{parent},parentmobile =#{parentmobile},address =#{address},password =#{password}
+        where id =#{id}
+    </update>
 </mapper>

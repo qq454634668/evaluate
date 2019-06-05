@@ -11,4 +11,6 @@ public interface StudentService {
     void addStu(Map<String,Object> param);
     //学生个人基本信息
     List stuOne(Map<String,Object> param);
+    //修改学生
+    void editStu(Map<String,Object> param);
 }

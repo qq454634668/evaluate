@@ -10,4 +10,6 @@ public interface StudentMapper {
     int addStu(Map<String,Object> param);
     //学生个人基本信息
     List stuOne(Map<String,Object> param);
+    //修改学生
+    int editStu(Map<String,Object> param);
 }

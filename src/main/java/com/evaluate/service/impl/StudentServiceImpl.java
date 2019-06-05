@@ -40,4 +40,12 @@ public class StudentServiceImpl implements StudentService {
     public List stuOne(Map<String, Object> param) {
         return studentMapper.stuOne(param);
     }
+
+    @Override
+    public void editStu(Map<String, Object> param) {
+        int flag = studentMapper.editStu(param);
+        if(flag <= 0){
+            throw new RuntimeException("修改失败");
+        }
+    }
 }
