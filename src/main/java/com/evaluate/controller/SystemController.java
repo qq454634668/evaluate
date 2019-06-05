@@ -25,7 +25,7 @@ public class SystemController {
     private SystemService systemService;
 
     /**
-     * 用户管理
+     * 用户管理列表
      * role_id  角色
      * kssj    开始时间  20190605141725
      * jssj    结束时间  20190605155625
@@ -50,5 +50,37 @@ public class SystemController {
             }
             return result;
     }
+    /**
+     * 新增用户
+     */
+    public Map<String,Object> addUsers(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
 
+    /**
+     * 修改用户密码
+     */
+    public Map<String,Object> editUsersPas(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
+    /**
+     * 修改用户角色
+     */
+    public Map<String,Object> editUsersRole(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
+    /**
+     * 删除用户
+     */
+    public Map<String,Object> delUsers(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
 }

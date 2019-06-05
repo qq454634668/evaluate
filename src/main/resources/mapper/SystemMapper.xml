@@ -19,6 +19,20 @@
 		t.department_id,
 		(select b.department from yuyi_evaluate_department b where b.id = t.department_id) department
 		from yuyi_evaluate_users t ) t
-		where t.role_id =#{role_id} and t.last_login between #{kssj} and #{jssj}
+		<where>
+            <if test="role_id!=null and role_id!=''">
+                and t.role_id =#{role_id}
+            </if>
+            <if test="(kssj!=null and kssj!='') and (jssj!=null and jssj!='')">
+                and t.last_login between #{kssj} and #{jssj}
+            </if>
+            <if test="(kssj!=null and kssj!='') and (jssj==null or jssj=='')">
+                and t.last_login &gt; kssj
+            </if>
+            <if test="(kssj==null or kssj=='') and (jssj!=null and jssj!='')">
+                and t.last_login &lt; kssj
+            </if>
+        </where>
+		where
     </select>
 </mapper>
