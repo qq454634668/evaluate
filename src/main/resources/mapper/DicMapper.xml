@@ -28,6 +28,8 @@
                 and t.grade_id = #{grade_id}
             </if>
         </where>
-
+    </select>
+    <select id="dicRole" parameterType="java.util.Map" resultMap="MbMap">
+        select t.id code,name from yuyi_evaluate_user_roles t where t.is_system ='0'
     </select>
 </mapper>

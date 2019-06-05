@@ -126,4 +126,25 @@ public class DicController {
         }
         return result;
     }
+
+    /**
+     *选择角色
+     */
+    @ResponseBody
+    @RequestMapping("/dic/dicRole")
+    public Map<String,Object> dicRole(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            result.put("data",dicService.dicRole(param));
+            result.put("message","选择角色查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","选择角色查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
+
 }
