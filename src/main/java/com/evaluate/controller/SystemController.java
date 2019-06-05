@@ -29,6 +29,7 @@ public class SystemController {
      * role_id  角色
      * kssj    开始时间  20190605141725
      * jssj    结束时间  20190605155625
+     *
      */
     @ResponseBody
     @RequestMapping("/system/usersList")
