@@ -19,9 +19,9 @@ logging:
   level:
     com:
       evaluate:
-        mapper: info
+        mapper: debug
     org:
-      springframework: warn
+      springframework: info
   file: /home/matrix/logs/hostelManage/hm.log
 
 server:
