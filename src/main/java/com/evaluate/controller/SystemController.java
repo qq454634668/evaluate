@@ -74,20 +74,18 @@ public class SystemController {
         try{
             String login = request.getParameter("login");
             param.put("login",login);
-            param.put("url","/"+login+".jpg");
             if(!file.isEmpty()){
-                if (FileUtils.upload(file, path,login)){
-                    systemService.addUsers(param);
-                    result.put("data",null);
-                    result.put("message","用户管理查询成功");
-                    result.put("code","200");
-                }else {
-                    result.put("code", 201);
-                    result.put("message", "上传失败");
-                    result.put("data", null);
-                }
+                //图片不是空赋值url
+                param.put("url","/"+login+".jpg");
             }else{
                 //图片为空，传一个空地址
+                param.put("url","");
+            }
+            if (FileUtils.upload(file, path,login)){
+                systemService.addUsers(param);
+                result.put("data",null);
+                result.put("message","添加成功");
+                result.put("code","200");
             }
         }catch (Exception e){
             result.put("message","用户管理查询失败");
