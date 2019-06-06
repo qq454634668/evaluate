@@ -36,7 +36,7 @@
     </select>
     <insert id="addUsers" parameterType="java.util.Map">
         insert into yuyi_evaluate_users
-            (first_name, login, password, role_id)
-         values (#{first_name},#{login},#{password},#{role_id})
+            (first_name, login, password, role_id,img)
+         values (#{first_name},#{login},#{password},#{role_id},#{url})
     </insert>
 </mapper>
