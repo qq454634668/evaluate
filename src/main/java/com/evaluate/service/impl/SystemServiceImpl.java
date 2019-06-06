@@ -33,4 +33,9 @@ public class SystemServiceImpl implements SystemService {
             throw new RuntimeException("添加失败");
         }
     }
+
+    @Override
+    public int existUser(Map<String, Object> param) {
+        return systemMapper.existUser(param);
+    }
 }

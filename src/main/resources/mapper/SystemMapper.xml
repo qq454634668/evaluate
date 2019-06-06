@@ -39,4 +39,7 @@
             (first_name, login, password, role_id,img)
          values (#{first_name},#{login},#{password},#{role_id},#{url})
     </insert>
+    <select id="existUser" parameterType="java.util.Map" resultType="int">
+        select count(*) from yuyi_evaluate_users where login = #{login}
+    </select>
 </mapper>

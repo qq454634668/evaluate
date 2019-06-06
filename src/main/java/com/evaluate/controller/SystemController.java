@@ -59,8 +59,25 @@ public class SystemController {
             return result;
     }
     /**
-     * 验证用户登录名是否存在
+     * 用户名是否被占用
+     * login  用户名
+     * data>0  用户名已经被占用   =0没被使用
      */
+    public Map<String,Object> existUser(String login){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        param.put("login",login);
+        try{
+            result.put("message","用户性是否被占用查询失败");
+            result.put("code","200");
+            result.put("data",systemService.existUser(param));
+        }catch (Exception e ){
+            result.put("message","用户性是否被占用查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
     /**
      * 新增用户
      * first_name 姓名
