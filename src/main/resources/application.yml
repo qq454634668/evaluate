@@ -1,0 +1,50 @@
+#application.yml
+spring:
+  datasource:
+    url: jdbc:mysql://114.116.15.130:3306/evaluate?useUnicode=true&characterEncoding=UTF-8&useSSL=true&allowMultiQueries=true
+    username: root
+    password: qbzx
+    driverClassName: com.mysql.jdbc.Driver
+    max-active: 20
+    max-idle: 8
+    min-idle: 8
+    initial-size: 10
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,\classpath:/static/,classpath:/public/,file:${web.upload-path}
+
+
+logging:
+  level:
+    com:
+      evaluate:
+        mapper: info
+    org:
+      springframework: warn
+  file: /home/matrix/logs/hostelManage/hm.log
+
+server:
+  port: 8080
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+web:
+  upload-path: D:/PICTURE
+
+license:
+  #公钥别名
+  pubAlias: kaifaPublicCert
+  #使用keytool生成密钥对时设置的密钥库的访问密码
+  keyStorePwd: kaifa123
+  #证书路径
+  #license.licName=/home/matrix/IdeaProjects/hostelManage/license/kaifalicense.lic
+  licName: ./license/kaifalicense.lic
+  #公共库路径
+  pubPath: /license/kaifaPublicCert.store
+  #项目识别码
+  onlykey: kaifa
+
+
+

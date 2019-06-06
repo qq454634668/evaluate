@@ -66,7 +66,7 @@ public class QuotaServiceImpl implements QuotaService {
                 List<Map<String,Object>> list3 = quotaMapper.quotaList(param);
                 List threeMenu = new ArrayList<>();
                 for(int c=0;c<list3.size();c++){
-                    System.out.println("a=="+a+",b==="+b+",c==="+c);
+//                    System.out.println("a=="+a+",b==="+b+",c==="+c);
                     Map<String,Object> mapR3 = new HashMap<>();
                     Map<String,Object> map3 = list3.get(c);
                     param.put("parent_id",map3.get("id"));
