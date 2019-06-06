@@ -25,4 +25,12 @@ public class SystemServiceImpl implements SystemService {
         PageHelper.startPage(pageNum,pageSize);
         return systemMapper.usersList(param);
     }
+
+    @Override
+    public void addUsers(Map<String, Object> param) {
+        int flag = systemMapper.addUsers(param);
+        if(flag <= 0){
+            throw new RuntimeException("添加失败");
+        }
+    }
 }

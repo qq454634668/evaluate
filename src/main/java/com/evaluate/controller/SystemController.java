@@ -52,10 +52,24 @@ public class SystemController {
     }
     /**
      * 新增用户
+     * first_name 姓名
+     * login      用户名
+     * password   密码
+     * role_id    权限ID
      */
     public Map<String,Object> addUsers(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
+        try{
+            systemService.addUsers(param);
+            result.put("data",null);
+            result.put("message","用户管理查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","用户管理查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
         return result;
     }
 

@@ -33,6 +33,10 @@
                 and t.last_login &lt; kssj
             </if>
         </where>
-		where
     </select>
+    <insert id="addUsers" parameterType="java.util.Map">
+        insert into yuyi_evaluate_users
+            (first_name, login, password, role_id)
+         values (#{first_name},#{login},#{password},#{role_id})
+    </insert>
 </mapper>

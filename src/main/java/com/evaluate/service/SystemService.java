@@ -6,4 +6,5 @@ import java.util.Map;
 
 public interface SystemService {
     List usersList(Map<String,Object> param,int pageNum, int pageSize);
+    void addUsers(Map<String,Object> param);
 }

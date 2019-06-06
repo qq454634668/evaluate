@@ -5,4 +5,5 @@ import java.util.Map;
 
 public interface SystemMapper {
     List usersList(Map<String,Object> param);
+    int addUsers(Map<String,Object> param);
 }
