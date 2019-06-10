@@ -15,4 +15,6 @@ public interface SystemService {
     void editUsersRole(Map<String,Object> param);
     //删除用户
     void delUsers(Map<String,Object> param);
+    //角色列表
+    List roleList(Map<String,Object> param);
 }

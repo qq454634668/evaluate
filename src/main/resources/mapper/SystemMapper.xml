@@ -13,6 +13,11 @@
         <result column="DEPARTMENT_ID" property="department_id"/>
         <result column="DEPARTMENT" property="department"/>
     </resultMap>
+    <resultMap id="roleList" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="NAME" property="name"/>
+        <result column="DESCRIPTION" property="description"/>
+    </resultMap>
     <select id="usersList" parameterType="java.util.Map" resultMap="usersList">
         select * from (select t.id,t.first_name,t.login,t.email,t.role_id,date_format(last_login, '%Y%m%d%H%i%s') last_login,
 		(select  a.name from yuyi_evaluate_user_roles a where a.id = t.role_id) rolename,
@@ -51,4 +56,7 @@
     <delete id="delUsers" parameterType="java.util.Map">
         delete from yuyi_evaluate_users where id =#{id}
     </delete>
+    <select id="roleList" parameterType="java.util.Map" resultMap="roleList">
+        select t.id,t.name,t.description from yuyi_evaluate_user_roles t where t.is_system ='0'
+    </select>
 </mapper>

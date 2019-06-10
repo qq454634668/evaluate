@@ -14,4 +14,6 @@ public interface SystemMapper {
     int editUsersRole(Map<String,Object> param);
     //删除用户
     int delUsers(Map<String,Object> param);
+    //角色列表
+    List roleList(Map<String,Object> param);
 }

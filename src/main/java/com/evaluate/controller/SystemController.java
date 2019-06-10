@@ -187,4 +187,24 @@ public class SystemController {
         }
         return result;
     }
+
+    /**
+     * 角色列表
+     */
+    public Map<String,Object> roleList(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        List<Map<String,Object>> list=new ArrayList<>();
+        try{
+            list = systemService.roleList(param);
+            result.put("data",list);
+            result.put("message","角色列表查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("message","角色列表查询失败");
+            result.put("code","500");
+            result.put("data",e.getMessage());
+        }
+        return result;
+    }
 }

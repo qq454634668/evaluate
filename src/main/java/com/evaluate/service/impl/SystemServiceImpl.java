@@ -62,4 +62,9 @@ public class SystemServiceImpl implements SystemService {
             throw new RuntimeException("删除失败");
         }
     }
+
+    @Override
+    public List roleList(Map<String, Object> param) {
+        return systemMapper.roleList(param);
+    }
 }
