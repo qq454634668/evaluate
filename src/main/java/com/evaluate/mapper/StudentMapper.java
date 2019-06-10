@@ -12,4 +12,6 @@ public interface StudentMapper {
     List stuOne(Map<String,Object> param);
     //修改学生
     int editStu(Map<String,Object> param);
+    //删除学生
+    int delStu(Map<String,Object> param);
 }

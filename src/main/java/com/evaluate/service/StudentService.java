@@ -13,4 +13,6 @@ public interface StudentService {
     List stuOne(Map<String,Object> param);
     //修改学生
     void editStu(Map<String,Object> param);
+    //删除用户
+    void delStu(Map<String,Object> param);
 }

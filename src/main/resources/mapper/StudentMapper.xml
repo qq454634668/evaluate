@@ -79,4 +79,7 @@
         identity =#{identity},parent =#{parent},parentmobile =#{parentmobile},address =#{address},password =#{password}
         where id =#{id}
     </update>
+    <delete id="delStu" parameterType="java.util.Map">
+        delete from yuyi_evaluate_student where id =#{id}
+    </delete>
 </mapper>

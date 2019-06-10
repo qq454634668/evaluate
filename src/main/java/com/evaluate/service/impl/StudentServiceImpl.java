@@ -48,4 +48,12 @@ public class StudentServiceImpl implements StudentService {
             throw new RuntimeException("修改失败");
         }
     }
+
+    @Override
+    public void delStu(Map<String, Object> param) {
+        int flag = studentMapper.delStu(param);
+        if(flag <= 0){
+            throw new RuntimeException("删除失败");
+        }
+    }
 }

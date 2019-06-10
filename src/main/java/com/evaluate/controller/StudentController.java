@@ -167,4 +167,27 @@ public class StudentController {
         return result;
     }
 
+
+    /**
+     * 删除学生
+     * id
+     */
+    @ResponseBody
+    @RequestMapping("/stu/delStu")
+    public Map<String,Object> delStu(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("id",request.getParameter("id"));
+            studentService.delStu(param);
+            result.put("data",null);
+            result.put("message","删除学生成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("data", null);
+            result.put("message","删除学生失败");
+            result.put("code","500");
+        }
+        return result;
+    }
 }
