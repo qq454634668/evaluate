@@ -42,4 +42,13 @@
     <select id="existUser" parameterType="java.util.Map" resultType="int">
         select count(*) from yuyi_evaluate_users where login = #{login}
     </select>
+    <update id="editUsersPas" parameterType="java.util.Map">
+        update yuyi_evaluate_users set password = #{password} where id =#{id}
+    </update>
+    <update id="editUsersRole" parameterType="java.util.Map">
+        update yuyi_evaluate_users set first_name = #{first_name},role_id={role_id} where id =#{id}
+    </update>
+    <delete id="delUsers" parameterType="java.util.Map">
+        delete from yuyi_evaluate_users where id =#{id}
+    </delete>
 </mapper>

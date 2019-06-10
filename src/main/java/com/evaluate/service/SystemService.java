@@ -9,4 +9,10 @@ public interface SystemService {
     void addUsers(Map<String,Object> param);
     //是否占用用户名
     int existUser(Map<String,Object> param);
+    //修改用户密码
+    void editUsersPas(Map<String,Object> param);
+    //修改用户信息
+    void editUsersRole(Map<String,Object> param);
+    //删除用户
+    void delUsers(Map<String,Object> param);
 }
