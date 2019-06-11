@@ -30,6 +30,16 @@
         <result column="CRITERION_ID" property="criterion_id"/>
         <result column="SCORE" property="score"/>
     </resultMap>
+    <resultMap id="quotaList" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="PARENT_ID" property="parent_id"/>
+        <result column="NAME" property="name"/>
+        <result column="WEIGHT" property="weight"/>
+        <result column="STANDARD" property="standard"/>
+        <result column="TYPE" property="type"/>
+        <result column="INITIAL" property="initial"/>
+        <result column="SCORE" property="score"/>
+    </resultMap>
     <select id="stuList" parameterType="java.util.Map" resultMap="stuMap">
         select t.id,t.identity,t.name,t.birthday,t.mobile,t.parent,t.parentmobile,
             (select a.name from dictionary a where a.code =t.sex and a.lx = 'xb') sex,
@@ -110,4 +120,17 @@
             update yuyi_evaluate_score set score = score-#{score} where id =#{score_id}
         </if>
     </update>
+    <select id="quotaList" parameterType="java.util.Map" resultMap="quotaList">
+        select t.id,t.parent_id,t.name,t.weight,t.standard,t.type,t.initial
+                from yuyi_evaluate_criterion t
+                where t.parent_id = #{parent_id}
+    </select>
+    <select id="quotaList2" parameterType="java.util.Map" resultMap="quotaList">
+        select t1.*,t2.score from (select t.id,t.parent_id,t.name,t.weight,t.standard,t.type,t.initial
+                from yuyi_evaluate_criterion t
+                where t.parent_id = #{parent_id}) t1,yuyi_evaluate_score t2
+           where t2.student_id = #{student_id}
+             and t2.term_id = #{term_id}
+             and t2.criterion_id = t1.id
+    </select>
 </mapper>

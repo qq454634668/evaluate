@@ -24,4 +24,6 @@ public interface StudentMapper {
     int addScoreSingle(Map<String,Object> param);
 
     List<Map<String,Object>> quotaList(Map<String,Object> param);
+    //带分数的列表
+    List<Map<String,Object>> quotaList2(Map<String,Object> param);
 }

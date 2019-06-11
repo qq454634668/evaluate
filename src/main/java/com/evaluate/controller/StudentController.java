@@ -224,9 +224,16 @@ public class StudentController {
         return result;
     }
 
+    /**
+     * student_id  学生ID
+     * term_id     学期ID
+     */
+    @ResponseBody
+    @RequestMapping("/stu/scoreList")
     public Map<String,Object> scoreList(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
+        List list = studentService.quotaList(param);
         return result;
     }
 }
