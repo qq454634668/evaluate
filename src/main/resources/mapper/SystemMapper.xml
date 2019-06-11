@@ -18,6 +18,15 @@
         <result column="NAME" property="name"/>
         <result column="DESCRIPTION" property="description"/>
     </resultMap>
+    <resultMap id="quotaList" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="PARENT_ID" property="parent_id"/>
+        <result column="NAME" property="name"/>
+        <result column="WEIGHT" property="weight"/>
+        <result column="STANDARD" property="standard"/>
+        <result column="TYPE" property="type"/>
+        <result column="INITIAL" property="initial"/>
+    </resultMap>
     <select id="usersList" parameterType="java.util.Map" resultMap="usersList">
         select * from (select t.id,t.first_name,t.login,t.email,t.role_id,date_format(last_login, '%Y%m%d%H%i%s') last_login,
 		(select  a.name from yuyi_evaluate_user_roles a where a.id = t.role_id) rolename,
@@ -58,5 +67,10 @@
     </delete>
     <select id="roleList" parameterType="java.util.Map" resultMap="roleList">
         select t.id,t.name,t.description from yuyi_evaluate_user_roles t where t.is_system ='0'
+    </select>
+    <select id="quotaList" parameterType="java.util.Map" resultMap="quotaList">
+        select t.id,t.parent_id,t.name,t.weight,t.standard,t.type,t.initial
+                from yuyi_evaluate_criterion t
+                where t.parent_id = #{parent_id}
     </select>
 </mapper>

@@ -14,7 +14,7 @@
         <result column="TYPE" property="type"/>
         <result column="INITIAL" property="initial"/>
     </resultMap>
-    <insert id="quotaMapper" parameterType="java.util.Map">
+    <insert id="addQuota" parameterType="java.util.Map">
         insert into yuyi_evaluate_criterion
                      (parent_id,name,standard,initial,type)
                       VALUES
@@ -30,5 +30,8 @@
     </select>
     <update id="editWeight" parameterType="java.util.Map">
         update yuyi_evaluate_criterion set weight = #{weight} where id = #{id}
+    </update>
+    <update id="editQuota" parameterType="java.util.Map">
+        update yuyi_evaluate_criterion set standard = #{standard},name=#{name},initial=#{initial},type=#{type} where id = #{id}
     </update>
 </mapper>

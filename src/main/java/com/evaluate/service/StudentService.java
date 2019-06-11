@@ -17,4 +17,6 @@ public interface StudentService {
     void delStu(Map<String,Object> param);
     //添加评分
     void addScore(Map<String,Object> param);
+    //指标列表
+    List quotaList(Map<String, Object> param);
 }
