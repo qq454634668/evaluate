@@ -56,4 +56,22 @@ public class StudentServiceImpl implements StudentService {
             throw new RuntimeException("删除失败");
         }
     }
+
+    @Override
+    public void addScore(Map<String, Object> param) {
+        List flag=studentMapper.existScore(param);
+        if(flag.size()==0){
+            //插入
+            studentMapper.addScore(param);   //第一次插入直接把score当得分插入，更新的时候就是加减法了
+            Object score_id = param.get("id");
+            param.put("score_id",score_id);
+        }else{
+            //更新操作
+            Map map = (Map) flag.get(0);
+            Object score_id = map.get("id");
+            param.put("score_id",score_id);
+            studentMapper.editScore(param);
+        }
+        studentMapper.addScoreSingle(param);  //统一记录单一数据
+    }
 }

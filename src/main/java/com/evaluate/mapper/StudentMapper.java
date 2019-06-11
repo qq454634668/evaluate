@@ -14,4 +14,12 @@ public interface StudentMapper {
     int editStu(Map<String,Object> param);
     //删除学生
     int delStu(Map<String,Object> param);
+    //此学生此评分项有没有评分
+    List existScore(Map<String,Object> param);
+    //添加分数
+    int addScore(Map<String,Object> param);
+    //更新分数
+    int editScore(Map<String,Object> param);
+    //添加单项分数
+    int addScoreSingle(Map<String,Object> param);
 }

@@ -23,6 +23,13 @@
         <result column="NATION" property="nation"/>
         <result column="CARD" property="card"/>
     </resultMap>
+    <resultMap id="socreMap" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="STUDENT_ID" property="student_id"/>
+        <result column="TERM_ID" property="term_id"/>
+        <result column="CRITERION_ID" property="criterion_id"/>
+        <result column="SCORE" property="score"/>
+    </resultMap>
     <select id="stuList" parameterType="java.util.Map" resultMap="stuMap">
         select t.id,t.identity,t.name,t.birthday,t.mobile,t.parent,t.parentmobile,
             (select a.name from dictionary a where a.code =t.sex and a.lx = 'xb') sex,
@@ -82,4 +89,25 @@
     <delete id="delStu" parameterType="java.util.Map">
         delete from yuyi_evaluate_student where id =#{id}
     </delete>
+    <select id="existScore" parameterType="java.util.Map" resultMap="socreMap">
+        select id,student_id,term_id,criterion_id,score from yuyi_evaluate_score where student_id =#{student_id}
+                                                   and term_id =#{term_id}
+                                                   and criterion_id = #{criterion_id}
+    </select>
+    <insert id="addScore" parameterType="java.util.Map" keyProperty="id" useGeneratedKeys="true">
+          insert into yuyi_evaluate_score (student_id, term_id, criterion_id, score)
+                                  VALUES (#{student_id},#{term_id},#{criterion_id},#{score})
+    </insert>
+    <insert id="addScoreSingle" parameterType="java.util.Map" >
+          insert into yuyi_evaluate_score_single (score_id, single, bz)
+                                  values (#{score_id},#{score},#{bz})
+    </insert>
+    <update id="editScore" parameterType="java.util.Map">
+        <if test="type==0">
+            update yuyi_evaluate_score set score = score+#{score} where id =#{score_id}
+        </if>
+        <if test="type==1">
+            update yuyi_evaluate_score set score = score-#{score} where id =#{score_id}
+        </if>
+    </update>
 </mapper>

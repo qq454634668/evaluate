@@ -190,4 +190,43 @@ public class StudentController {
         }
         return result;
     }
+
+    /**
+     * 评分
+     * student_id   学生ID
+     * term_id      季度
+     *criterion_id  评分项ID
+     * score        分数
+     * type         评分类型（0是加分  1是减分）
+     * bz           备注
+     */
+    @ResponseBody
+    @RequestMapping("/stu/addScore")
+    public Map<String,Object> addScore(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("student_id",request.getParameter("student_id"));
+            param.put("term_id",request.getParameter("term_id"));
+            param.put("criterion_id",request.getParameter("criterion_id"));
+            param.put("score",request.getParameter("score"));
+            param.put("type",request.getParameter("type"));
+            param.put("bz",request.getParameter("bz"));
+            studentService.addScore(param);
+            result.put("data",null);
+            result.put("message","评分成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("data", null);
+            result.put("message","评分失败");
+            result.put("code","500");
+        }
+        return result;
+    }
+
+    public Map<String,Object> scoreList(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        return result;
+    }
 }

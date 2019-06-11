@@ -15,4 +15,6 @@ public interface StudentService {
     void editStu(Map<String,Object> param);
     //删除用户
     void delStu(Map<String,Object> param);
+    //添加评分
+    void addScore(Map<String,Object> param);
 }
