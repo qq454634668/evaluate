@@ -28,7 +28,7 @@ public class QuotaController {
      * standard  参考分值
      * name      指标（内容）
      * initial   初始值
-     * type      评分方式 默认 0,1是加分
+     * type      评分方式 默认 0是加分 ,1是减分
      */
 
     @RequestMapping("/quota/addQuota")

@@ -118,6 +118,7 @@ public class StudentServiceImpl implements StudentService {
     }
     private Map<String,Object> getSorce(List<Map<String,Object>> list){
         Map<String,Object> map = new HashMap();
+        map = list.get(0);
         return map;
     }
 }
