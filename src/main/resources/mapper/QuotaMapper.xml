@@ -16,9 +16,9 @@
     </resultMap>
     <insert id="addQuota" parameterType="java.util.Map">
         insert into yuyi_evaluate_criterion
-                     (parent_id,name,standard,initial,type)
+                     (parent_id,name,standard,initial,type,weight)
                       VALUES
-                    (#{parent_id},#{name},#{standard},#{initial},#{type})
+                    (#{parent_id},#{name},#{standard},#{initial},#{type},'0')
     </insert>
     <delete id="delQuota" parameterType="java.util.Map">
         delete FROM yuyi_evaluate_criterion where id=#{id}
