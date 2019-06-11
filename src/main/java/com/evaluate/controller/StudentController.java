@@ -233,6 +233,8 @@ public class StudentController {
     public Map<String,Object> scoreList(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
+        param.put("student_id",request.getParameter("student_id"));
+        param.put("term_id",request.getParameter("term_id"));
         List list = studentService.quotaList(param);
         return result;
     }

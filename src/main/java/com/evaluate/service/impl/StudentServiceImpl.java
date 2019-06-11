@@ -99,7 +99,7 @@ public class StudentServiceImpl implements StudentService {
                     Map<String,Object> mapR3 = new HashMap<>();
                     Map<String,Object> map3 = list3.get(c);
                     param.put("parent_id",map3.get("id"));
-                    List<Map<String,Object>> list4 = studentMapper.quotaList(param);
+                    List<Map<String,Object>> list4 = studentMapper.quotaList2(param);
                     Map<String,Object> sorceMap = getSorce(list4);
                     mapR3.put("fjMenu",map3);
                     mapR3.put("zjMenu",list4);
@@ -117,9 +117,15 @@ public class StudentServiceImpl implements StudentService {
         return oneMenu;
     }
     private Map<String,Object> getSorce(List<Map<String,Object>> list){
-        Map<String,Object> map = new HashMap();
-        map = list.get(0);
+        Map<String,Object> result = new HashMap<>();
+        int sum =0;
+        for(int i=0;i<list.size();i++){
+            //取每一个map的得分，有就是有没有就是0，之后加起来作为上一级的得分
+            Map<String,Object> map = list.get(i);
+            int score = (int) map.get("score");
+            sum += score;
+        }
         System.out.println("sssss");
-        return map;
+        return result;
     }
 }
