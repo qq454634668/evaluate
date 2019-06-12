@@ -225,6 +225,7 @@ public class StudentController {
     }
 
     /**
+     * 评分结果列表
      * student_id  学生ID
      * term_id     学期ID
      */
@@ -233,9 +234,18 @@ public class StudentController {
     public Map<String,Object> scoreList(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
-        param.put("student_id",request.getParameter("student_id"));
-        param.put("term_id",request.getParameter("term_id"));
-        List list = studentService.quotaList(param);
+        try{
+            param.put("student_id",request.getParameter("student_id"));
+            param.put("term_id",request.getParameter("term_id"));
+            List list = studentService.quotaList(param);
+            result.put("data",list);
+            result.put("message","评分结果成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("data", null);
+            result.put("message","评分结果失败");
+            result.put("code","500");
+        }
         return result;
     }
 }

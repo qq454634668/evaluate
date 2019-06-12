@@ -82,6 +82,9 @@ public class StudentServiceImpl implements StudentService {
         param.put("parent_id","0");
         List<Map<String,Object>> list1 = studentMapper.quotaList(param);
         List oneMenu = new ArrayList<>();
+        double oneSorce = 0;
+        double twoSorce = 0;
+        double threeSorce = 0;
         for(int a=0;a<list1.size();a++){
             Map<String,Object> mapR1 = new HashMap<>();
             Map<String,Object> map1 = list1.get(a);
@@ -100,32 +103,49 @@ public class StudentServiceImpl implements StudentService {
                     Map<String,Object> map3 = list3.get(c);
                     param.put("parent_id",map3.get("id"));
                     List<Map<String,Object>> list4 = studentMapper.quotaList2(param);
-                    Map<String,Object> sorceMap = getSorce(list4);
+                    threeSorce = getSorce(list4);
                     mapR3.put("fjMenu",map3);
                     mapR3.put("zjMenu",list4);
+                    mapR3.put("scrce",threeSorce);
                     threeMenu.add(c,mapR3);
+                    twoSorce += threeSorce;
+                    threeSorce = 0;
                 }
+                String weightString = map2.get("weight").toString();
+                double weight = Double.parseDouble(weightString);
+                double finalScore = twoSorce*weight/100;
+                oneSorce += finalScore;
                 mapR2.put("fjMenu",map2);
                 mapR2.put("zjMenu",threeMenu);
+                mapR2.put("scrce",twoSorce);
                 twoMenu.add(b,mapR2);
+                twoSorce = 0;
             }
+            String weightString = map1.get("weight").toString();
+            double weight = Double.parseDouble(weightString);
+            double finalScore = oneSorce*weight/100;
+//            oneSorce += finalScore;
             mapR1.put("fjMenu",map1);
             mapR1.put("zjMenu",twoMenu);
+            mapR1.put("scrce",finalScore);
             oneMenu.add(a,mapR1);
+            oneSorce = 0;
         }
 
         return oneMenu;
     }
-    private Map<String,Object> getSorce(List<Map<String,Object>> list){
-        Map<String,Object> result = new HashMap<>();
-        int sum =0;
+    private double getSorce(List<Map<String,Object>> list){
+        double sum =0;
         for(int i=0;i<list.size();i++){
             //取每一个map的得分，有就是有没有就是0，之后加起来作为上一级的得分
             Map<String,Object> map = list.get(i);
-            int score = (int) map.get("score");
-            sum += score;
+            String scoreString = map.get("score").toString();
+            double score = Double.parseDouble(scoreString);
+            String weightString = map.get("weight").toString();
+            double weight = Double.parseDouble(weightString);
+            double finalScore = score*weight/100;
+            sum += finalScore;
         }
-        System.out.println("sssss");
-        return result;
+        return sum;
     }
 }
