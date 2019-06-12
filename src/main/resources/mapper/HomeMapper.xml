@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evaluate.mapper.HomeMapper">
+    <resultMap id="test" type="java.util.Map">
+        <result column="ID" property="id"/>
+    </resultMap>
+    <resultMap id="quotaList" type="java.util.Map">
+        <result column="ID" property="id"/>
+        <result column="PARENT_ID" property="parent_id"/>
+        <result column="NAME" property="name"/>
+        <result column="WEIGHT" property="weight"/>
+        <result column="STANDARD" property="standard"/>
+        <result column="TYPE" property="type"/>
+        <result column="INITIAL" property="initial"/>
+    </resultMap>
+</mapper>
