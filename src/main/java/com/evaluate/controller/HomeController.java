@@ -2,6 +2,7 @@ package com.evaluate.controller;
 
 
 import com.evaluate.service.HomeService;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,4 +35,19 @@ public class HomeController {
         return result;
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("/test")
+    @ResponseBody
+    public Map<String,Object> test(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        String data = request.getParameter("data");
+        JSONObject obj = JSONObject.fromObject(data);
+        System.out.println("sss");
+        return result;
+    }
 }
