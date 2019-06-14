@@ -62,6 +62,7 @@ public class StudentServiceImpl implements StudentService {
         List flag=studentMapper.existScore(param);
         if(flag.size()==0){
             //插入
+            //4级菜单
             studentMapper.addScore(param);   //第一次插入直接把score当得分插入，更新的时候就是加减法了
             Object score_id = param.get("id");
             param.put("score_id",score_id);
@@ -72,7 +73,67 @@ public class StudentServiceImpl implements StudentService {
             param.put("score_id",score_id);
             studentMapper.editScore(param);
         }
-        studentMapper.addScoreSingle(param);  //统一记录单一数据
+        studentMapper.addScoreSingle(param); //统一记录单一数据
+        //三级菜单
+        Map<String,Object> ThreeMap =  studentMapper.getParentId(param).get(0);
+        String score = param.get("score").toString();
+        String ThreeWeight = ThreeMap.get("weight").toString();
+        double Dscore = Double.parseDouble(score);
+        double DThreeWeight = Double.parseDouble(ThreeWeight);
+        double ThreeScore = Dscore*DThreeWeight/100;
+        Object ThreeParent_id = ThreeMap.get("parent_id");
+        param.put("score",ThreeScore);
+        param.put("criterion_id",ThreeParent_id);
+        List exist = studentMapper.existCriterion(param);
+        if(exist.size()==0){
+            //插入
+            studentMapper.addScore(param);   //第一次插入直接把score当得分插入，更新的时候就是加减法了
+        }else{
+            //更新操作
+            Map map = (Map) exist.get(0);
+            Object score_id = map.get("id");
+            param.put("score_id",score_id);
+            studentMapper.editScore(param);
+        }
+        //二级菜单
+        Map<String,Object> TwoMap =  studentMapper.getParentId(param).get(0);
+        String TwoWeight = TwoMap.get("weight").toString();
+        double DTwoWeight = Double.parseDouble(TwoWeight);
+        double TwoScore = ThreeScore*DTwoWeight/100;
+        Object TwoParent_id = TwoMap.get("parent_id");
+        param.put("score",TwoScore);
+        param.put("criterion_id",TwoParent_id);
+        exist = studentMapper.existCriterion(param);
+        if(exist.size()==0){
+            //插入
+            studentMapper.addScore(param);   //第一次插入直接把score当得分插入，更新的时候就是加减法了
+        }else{
+            //更新操作
+            Map map = (Map) exist.get(0);
+            Object score_id = map.get("id");
+            param.put("score_id",score_id);
+            studentMapper.editScore(param);
+        }
+        //1级菜单
+        Map<String,Object> OneMap =  studentMapper.getParentId(param).get(0);
+        String OneWeight = OneMap.get("weight").toString();
+        double DOneWeight = Double.parseDouble(OneWeight);
+        double OneScore = TwoScore*DOneWeight/100;
+        Object OneParent_id = OneMap.get("parent_id");
+        param.put("score",OneScore);
+        param.put("criterion_id",OneParent_id);
+        exist = studentMapper.existCriterion(param);
+        if(exist.size()==0){
+            //插入
+            studentMapper.addScore(param);   //第一次插入直接把score当得分插入，更新的时候就是加减法了
+        }else{
+            //更新操作
+            Map map = (Map) exist.get(0);
+            Object score_id = map.get("id");
+            param.put("score_id",score_id);
+            studentMapper.editScore(param);
+        }
+
     }
 
 

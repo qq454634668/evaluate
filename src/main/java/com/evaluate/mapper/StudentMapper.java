@@ -22,8 +22,12 @@ public interface StudentMapper {
     int editScore(Map<String,Object> param);
     //添加单项分数
     int addScoreSingle(Map<String,Object> param);
+    //获得parent_id
+    List<Map<String,Object>> getParentId(Map<String,Object> param);
 
     List<Map<String,Object>> quotaList(Map<String,Object> param);
     //带分数的列表
     List<Map<String,Object>> quotaList2(Map<String,Object> param);
+    //判断该Criterion_id和该学生是否有数据
+    List<Map<String,Object>> existCriterion(Map<String,Object> param);
 }

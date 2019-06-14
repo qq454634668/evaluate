@@ -136,4 +136,12 @@
                  and t2.criterion_id = t1.id
              ) a
     </select>
+    <select id="getParentId" parameterType="java.util.Map" resultMap="quotaList">
+        select parent_id,weight from yuyi_evaluate_criterion where t.id = #{criterion_id}
+    </select>
+    <select id="existCriterion" parameterType="java.util.Map"  resultMap="quotaList">
+        select id from yuyi_evaluate_score where criterion_id = #{criterion_id}
+                                                   and student_id =#{student_id}
+                                                   and term_id=#{term_id}
+    </select>
 </mapper>
