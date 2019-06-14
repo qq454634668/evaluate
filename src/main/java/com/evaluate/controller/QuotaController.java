@@ -65,13 +65,15 @@ public class QuotaController {
       */
     @RequestMapping("/quota/editQuota")
     @ResponseBody
-    public Map<String,Object> editQuota(String id,String standard,String name){
+    public Map<String,Object> editQuota(String id,String standard,String name,String initial,String type){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
             param.put("id",id);
             param.put("standard",standard);
             param.put("name",name);
+            param.put("initial",initial);
+            param.put("type",type);
             quotaService.editQuota(param);
             result.put("data",null);
             result.put("message","更新成功");
