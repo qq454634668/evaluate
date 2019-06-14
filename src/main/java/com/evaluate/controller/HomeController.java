@@ -27,11 +27,21 @@ public class HomeController {
     /**
      * var dataMap = [{xm:xm,sfzh:sfzh},{ 1}]
      * 传值 data：JSON.stringify(dataMap)
+     *
+     * kx  选择科系   必选
+     * zy  选择专业
+     * bj  选择所在班级
+     * stu 选择学生
+     * xq  选择学期   必选
+     * parent_id   默认是0
      */
+    @RequestMapping("/home/makeTb")
+    @ResponseBody
     public Map<String,Object> makeTb(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
-        Map<String,Object> param = new HashMap<>();
         String data = request.getParameter("data");
+        String parent_id = request.getParameter("parent_id");
+        result = homeService.makeTb(data,parent_id);
         return result;
     }
 

@@ -27,6 +27,7 @@ public class StudentController {
 
 
     /**
+     * 和评分学生是一个列表，不显示原图的数据项
      * 学生列表
      * grade_id        年级ID
      * department_id   科系ID
@@ -136,10 +137,10 @@ public class StudentController {
     @RequestMapping("/stu/editStu")
     public Map<String,Object> editStu(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
-        Map<String,Object> param = new HashMap<>();
         try{
-            param.put("id",request.getParameter("id"));
+            Map<String,Object> param = new HashMap<>();
             param.put("identity",request.getParameter("identity"));
+            param.put("id",request.getParameter("id"));
             param.put("name",request.getParameter("name"));
             param.put("sex",request.getParameter("sex"));
             param.put("birthday",request.getParameter("birthday"));
@@ -147,14 +148,15 @@ public class StudentController {
             param.put("card",request.getParameter("card"));
             param.put("origin",request.getParameter("origin"));
             param.put("mobile",request.getParameter("mobile"));
-            param.put("grade_id",request.getParameter("grade_id"));
             param.put("department_id",request.getParameter("department_id"));
             param.put("specialty_id",request.getParameter("specialty_id"));
+            param.put("grade_id",request.getParameter("grade_id"));
             param.put("team_id",request.getParameter("team_id"));
             param.put("parent",request.getParameter("parent"));
             param.put("parentmobile",request.getParameter("parentmobile"));
             param.put("address",request.getParameter("address"));
             param.put("password",request.getParameter("password"));
+            System.out.println();
             studentService.editStu(param);
             result.put("data", null);
             result.put("message","修改学生成功");
@@ -192,7 +194,7 @@ public class StudentController {
     }
 
     /**
-     * 评分
+     * 添加评分
      * student_id   学生ID
      * term_id      季度
      *criterion_id  评分项ID
@@ -248,4 +250,5 @@ public class StudentController {
         }
         return result;
     }
+
 }

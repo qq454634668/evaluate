@@ -6,6 +6,5 @@ import java.util.Map;
 
 
 public interface HomeService {
-
-    Map<String,Object> makeTb(String data);
+    Map<String,Object> makeTb(String data,String parent_id);
 }
