@@ -33,14 +33,14 @@ public class HomeController {
      * bj  选择所在班级
      * stu 选择学生
      * xq  选择学期   必选
-     * parent_id   默认是0
+     * id   默认是0
      */
     @RequestMapping("/home/makeTb")
     @ResponseBody
     public Map<String,Object> makeTb(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         String data = request.getParameter("data");
-        String parent_id = request.getParameter("parent_id");
+        String parent_id = request.getParameter("id");
         result = homeService.makeTb(data,parent_id);
         return result;
     }
