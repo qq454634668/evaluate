@@ -47,7 +47,7 @@ public class QuotaServiceImpl implements QuotaService {
     }
 
     @Override
-    public List quotaList(Map<String, Object> param) {
+    public List<Map<String,Object>> quotaList(Map<String, Object> param) {
 //        List result = new ArrayList<>();
         //parent_id为0,根菜单
         param.put("parent_id","0");

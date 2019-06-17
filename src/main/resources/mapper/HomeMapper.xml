@@ -10,7 +10,7 @@
         <result column="ID" property="id"/>
         <result column="NAME" property="name"/>
     </resultMap>
-    <select id="sorceList" parameterMap="java.util.Map" resultMap="mb">
+    <select id="sorceList" parameterType="java.util.Map" resultMap="mb">
         select t1.score,t1.criterion_id id,t2.name from
         (select b.score,b.criterion_id from yuyi_evaluate_student a,yuyi_evaluate_score b
                         <where>

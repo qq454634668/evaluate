@@ -13,7 +13,7 @@ public interface QuotaService {
     //删除指标
     void delQuota(Map<String, Object> param);
     //指标列表
-    List quotaList(Map<String, Object> param);
+    List<Map<String,Object>> quotaList(Map<String, Object> param);
     //修改权重
     void editWeight(String id,String weight);
 }
