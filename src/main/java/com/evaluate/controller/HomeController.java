@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,7 +34,7 @@ public class HomeController {
      * bj  选择所在班级
      * stu 选择学生
      * xq  选择学期   必选
-     * id   默认是0
+     * id   默认是0   这个分开传，不放到JSON串里
      */
     @RequestMapping("/home/makeTb")
     @ResponseBody
@@ -41,11 +42,20 @@ public class HomeController {
         Map<String,Object> result = new HashMap<>();
         String data = request.getParameter("data");
         String parent_id = request.getParameter("id");
-        result = homeService.makeTb(data,parent_id);
-        return result;
-    }
+        try{
+            List<Map<String,Object>> list = homeService.makeTb(data,parent_id);
+            result.put("data",list);
+            result.put("message","图表查询成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("data",null);
+            result.put("message","图表查询失败");
+            result.put("code","500");
+        }
+     return result;
+     }
 
-    /**
+     /**
      *
      * @param request
      * @return

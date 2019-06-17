@@ -5,14 +5,33 @@
     <resultMap id="test" type="java.util.Map">
         <result column="ID" property="id"/>
     </resultMap>
-    <resultMap id="quotaList" type="java.util.Map">
+    <resultMap id="mb" type="java.util.Map">
+        <result column="SCORE" property="score"/>
         <result column="ID" property="id"/>
-        <result column="PARENT_ID" property="parent_id"/>
         <result column="NAME" property="name"/>
-        <result column="WEIGHT" property="weight"/>
-        <result column="STANDARD" property="standard"/>
-        <result column="TYPE" property="type"/>
-        <result column="INITIAL" property="initial"/>
     </resultMap>
-    
+    <select id="sorceList" parameterMap="java.util.Map" resultMap="mb">
+        select t1.score,t1.criterion_id id,t2.name from
+        (select b.score,b.criterion_id from yuyi_evaluate_student a,yuyi_evaluate_score b
+                        <where>
+                             a.id = b.student_id
+                             <if test="kx!=null and kx!=''">
+                                and  a.department_id = '20'
+                             </if>
+                             <if test="zy!=null and zy!=''">
+                                and  a.specialty = #{zy}
+                             </if>
+                             <if test="bj!=null and bj!=''">
+                                and  a.team_id = #{bj}
+                             </if>
+                             <if test="stu!=null and stu!=''">
+                                and  a.id = #{stu}
+                             </if>
+                             <if test="xq!=null and xq!=''">
+                                and  b.term_id = #{xq}
+                             </if>
+                        </where>) t1,
+        (select id criterionId,t.name from yuyi_evaluate_criterion t where t.parent_id=#{parent_id}) t2
+             where t1.criterion_id = t2.criterionId
+    </select>
 </mapper>

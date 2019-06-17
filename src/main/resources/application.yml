@@ -29,6 +29,7 @@ server:
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package:com.evaluate.pojo
 
 web:
   upload-path: D:/PICTURE
