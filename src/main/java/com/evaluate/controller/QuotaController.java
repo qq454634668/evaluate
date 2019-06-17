@@ -43,6 +43,12 @@ public class QuotaController {
             param.put("name",name);
             param.put("initial",initial);
             param.put("type",type);
+            if(parent_id==null || parent_id==""){
+                result.put("data",null);
+                result.put("message","父级菜单不能为空");
+                result.put("code",201);
+                return result;
+            }
             quotaService.addQuota(param);
             result.put("data",null);
             result.put("message","插入成功");
