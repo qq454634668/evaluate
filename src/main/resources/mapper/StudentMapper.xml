@@ -91,10 +91,9 @@
           #{address},#{password})
     </insert>
     <update id="editStu" parameterType="java.util.Map">
-        update yuyi_evaluate_student set identity =#{identity},name =#{name},sex =#{sex},
-        birthday =#{birthday},nation =#{nation},card =#{card},origin =#{origin},mobile =#{mobile},
-        team_id =#{team_id},grade_id =#{grade_id},department_id =#{department_id},specialty_id =#{specialty_id},
-        identity =#{identity},parent =#{parent},parentmobile =#{parentmobile},address =#{address},password =#{password}
+        update yuyi_evaluate_student set identity =#{identity},name =#{name},sex =#{sex},birthday =#{birthday},
+        nation =#{nation},card =#{card},origin =#{origin},mobile =#{mobile},team_id =#{team_id},grade_id =#{grade_id},
+        department_id =#{department_id},specialty_id =#{specialty_id},parent =#{parent},parentmobile =#{parentmobile},address =#{address},password =#{password}
         where id =#{id}
     </update>
     <delete id="delStu" parameterType="java.util.Map">

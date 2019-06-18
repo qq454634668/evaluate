@@ -61,10 +61,10 @@ public class CollegeController {
             param.put("grade",grade);
             collegeService.addGrade(param);
             result.put("data",null);
-            result.put("message","添加学级查询成功");
+            result.put("message","添加学级成功");
             result.put("code","200");
         }catch (Exception e){
-            result.put("message","添加学级查询失败");
+            result.put("message","添加学级失败");
             result.put("code","500");
             result.put("data",e.getMessage());
         }
@@ -88,10 +88,10 @@ public class CollegeController {
             param.put("id",id);
             collegeService.editGrade(param);
             result.put("data",null);
-            result.put("message","修改学级查询成功");
+            result.put("message","修改学级成功");
             result.put("code","200");
         }catch (Exception e){
-            result.put("message","修改学级查询失败");
+            result.put("message","修改学级失败");
             result.put("code","500");
             result.put("data",e.getMessage());
         }
