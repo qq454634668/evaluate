@@ -29,14 +29,14 @@ public class CollegeController {
       */
     @ResponseBody
     @RequestMapping("/college/gradeList")
-    public Map<String,Object> gradeList(HttpServletRequest request,int pageNum,int pageSize){
+    public Map<String,Object> gradeList(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         List<Map<String,Object>> list=new ArrayList<>();
         try{
-            list = collegeService.gradeList(param,pageNum,pageSize);
-            PageInfo<Map<String,Object>> pageList = new PageInfo<>(list);
-            result.put("data",pageList);
+            list = collegeService.gradeList(param);
+//            PageInfo<Map<String,Object>> pageList = new PageInfo<>(list);
+            result.put("data",list);
             result.put("message","学校列表查询成功");
             result.put("code","200");
         }catch (Exception e){

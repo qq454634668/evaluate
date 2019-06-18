@@ -22,8 +22,8 @@ public class CollegeServiceImpl implements CollegeService {
 
 
     @Override
-    public List gradeList(Map<String, Object> param,int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
+    public List gradeList(Map<String, Object> param) {
+//        PageHelper.startPage(pageNum,pageSize);
         return collegeMapper.gradeList(param);
     }
 

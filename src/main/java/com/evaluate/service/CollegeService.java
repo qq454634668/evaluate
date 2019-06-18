@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface CollegeService {
     //学校列表
-    List gradeList(Map<String,Object> param,int pageNum, int pageSize);
+    List gradeList(Map<String,Object> param);
     //增加学院
     void addGrade(Map<String,Object> param);
     //修改学院
