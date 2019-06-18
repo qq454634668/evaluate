@@ -42,7 +42,7 @@
         update yuyi_evaluate_grade set grade = #{grade} where id = #{id}
     </update>
     <select id="gradeList" parameterType="java.util.Map" resultMap="gradeMap">
-        select id,grade,created_at,updated_at,leave from yuyi_evaluate_grade t
+        select id,grade,t.leave from yuyi_evaluate_grade t
     </select>
     <delete id="delGrade" parameterType="java.util.Map">
         delete from yuyi_evaluate_grade where id=#{id}
