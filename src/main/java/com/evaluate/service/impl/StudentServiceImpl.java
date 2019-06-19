@@ -75,7 +75,8 @@ public class StudentServiceImpl implements StudentService {
         }
         studentMapper.addScoreSingle(param); //统一记录单一数据
         //三级菜单
-        Map<String,Object> ThreeMap =  studentMapper.getParentId(param).get(0);
+        List<Map<String,Object>> threeList = studentMapper.getParentId(param);
+        Map<String,Object> ThreeMap =  threeList.get(0);
         String score = param.get("score").toString();
         String ThreeWeight = ThreeMap.get("weight").toString();
         double Dscore = Double.parseDouble(score);

@@ -98,6 +98,7 @@ public class CollegeServiceImpl implements CollegeService {
 
     @Override
     public List teamList(Map<String, Object> param) {
+        int index = 1;
         Object specialty_parent_id =  param.get("specialty_parent_id");
         Object department =  param.get("department");
         List list1 = new ArrayList();
@@ -140,6 +141,8 @@ public class CollegeServiceImpl implements CollegeService {
                     List list4 = collegeMapper.teamList(param);
                     resultMap3.put("mainMenu",map3);
                     resultMap3.put("sonMenu",list4);
+                    resultMap3.put("index",index);
+                    index++;
                     threeMenu.add(b,resultMap3);
                 }
                 resultMap2.put("mainMenu",map2);
