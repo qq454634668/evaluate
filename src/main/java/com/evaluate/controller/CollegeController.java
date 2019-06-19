@@ -245,6 +245,7 @@ public class CollegeController {
      * specialty_parent_id  科目ID yuyi_evaluate_department表ID
      * department 科目名
      * grade_id 年级ID
+     * grade_name 年级名
      * http://localhost:8080/college/teamList?specialty_parent_id=20&grade_id=5&department
      */
     @ResponseBody
@@ -256,6 +257,7 @@ public class CollegeController {
             param.put("specialty_parent_id",request.getParameter("specialty_parent_id"));
             param.put("grade_id",request.getParameter("grade_id"));
             param.put("department",request.getParameter("department"));
+            param.put("grade_name",request.getParameter("grade_name"));
             result.put("data",collegeService.teamList(param));
             result.put("message","班级列表查询成功");
             result.put("code","200");

@@ -122,10 +122,12 @@ public class CollegeServiceImpl implements CollegeService {
                 Map resultMap2 = new HashMap();
                 param.put("specialty_id",map2.get("id"));
                 Object grade_id =  param.get("grade_id");
+                Object grade_name =  param.get("grade_name");
                 List list3 = new ArrayList();
-                if(grade_id!=null &&grade_id!=""){
+                if(!grade_id.equals(null)&&!grade_id.equals("")){
                     Map lsMap2 = new HashMap();
                     lsMap2.put("grade_id",grade_id);
+                    lsMap2.put("grade_name",grade_name);
                     list3.add(0,lsMap2);
                 }else{
                     list3 = collegeMapper.gradeList2(param);
