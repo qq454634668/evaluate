@@ -97,7 +97,8 @@ public class StudentServiceImpl implements StudentService {
             studentMapper.editScore(param);
         }
         //二级菜单
-        Map<String,Object> TwoMap =  studentMapper.getParentId(param).get(0);
+        List<Map<String,Object>> twoList = studentMapper.getParentId(param);
+        Map<String,Object> TwoMap =  twoList.get(0);
         String TwoWeight = TwoMap.get("weight").toString();
         double DTwoWeight = Double.parseDouble(TwoWeight);
         double TwoScore = ThreeScore*DTwoWeight/100;
@@ -116,7 +117,9 @@ public class StudentServiceImpl implements StudentService {
             studentMapper.editScore(param);
         }
         //1级菜单
-        Map<String,Object> OneMap =  studentMapper.getParentId(param).get(0);
+        System.out.println("sss");
+        List<Map<String,Object>> oneList = studentMapper.getParentId(param);
+        Map<String,Object> OneMap =  oneList.get(0);
         String OneWeight = OneMap.get("weight").toString();
         double DOneWeight = Double.parseDouble(OneWeight);
         double OneScore = TwoScore*DOneWeight/100;

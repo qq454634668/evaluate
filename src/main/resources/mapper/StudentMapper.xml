@@ -139,7 +139,7 @@
         select parent_id,weight from yuyi_evaluate_criterion where id = #{criterion_id}
     </select>
     <select id="getParentId" parameterType="java.util.Map" resultMap="quotaList">
-        select a.* from (select * from  yuyi_evaluate_criterion t where t.id='9') t1 left join yuyi_evaluate_criterion a on t1.parent_id = a.id
+        select a.parent_id,a.weight,a.id from (select * from  yuyi_evaluate_criterion t where t.id=#{criterion_id}) t1 left join yuyi_evaluate_criterion a on t1.parent_id = a.id
     </select>
     <select id="existCriterion" parameterType="java.util.Map"  resultMap="quotaList">
         select id from yuyi_evaluate_score where criterion_id = #{criterion_id}
