@@ -105,8 +105,8 @@
                                                    and criterion_id = #{criterion_id}
     </select>
     <insert id="addScore" parameterType="java.util.Map" keyProperty="id" useGeneratedKeys="true">
-          insert into yuyi_evaluate_score (student_id, term_id, criterion_id, score)
-                                  VALUES (#{student_id},#{term_id},#{criterion_id},#{score})
+          insert into yuyi_evaluate_score (student_id, term_id, criterion_id, score,reason)
+                                  VALUES (#{student_id},#{term_id},#{criterion_id},#{score},#{bz})
     </insert>
     <insert id="addScoreSingle" parameterType="java.util.Map" >
           insert into yuyi_evaluate_score_single (score_id, single, bz)

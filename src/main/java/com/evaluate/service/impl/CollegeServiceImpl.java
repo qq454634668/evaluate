@@ -99,10 +99,12 @@ public class CollegeServiceImpl implements CollegeService {
     @Override
     public List teamList(Map<String, Object> param) {
         Object specialty_parent_id =  param.get("specialty_parent_id");
+        Object department =  param.get("department");
         List list1 = new ArrayList();
-        if(specialty_parent_id!=null &&specialty_parent_id!=""){
+        if(!specialty_parent_id.equals("")&&!specialty_parent_id.equals(null)){
             Map lsMap = new HashMap();
             lsMap.put("id",specialty_parent_id);
+            lsMap.put("department",department);
             list1.add(0,lsMap);
         }else{
             list1 =collegeMapper.departmentList(param);

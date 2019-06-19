@@ -213,7 +213,12 @@ public class StudentController {
             param.put("criterion_id",request.getParameter("criterion_id"));
             param.put("score",request.getParameter("score"));
             param.put("type",request.getParameter("type"));
-            param.put("bz",request.getParameter("bz"));
+            Object bz = request.getParameter("bz");
+            if(bz==null){
+                param.put("bz","");
+            }else{
+                param.put("bz",bz);
+            }
             studentService.addScore(param);
             result.put("data",null);
             result.put("message","评分成功");
