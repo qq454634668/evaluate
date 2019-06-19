@@ -98,6 +98,7 @@ public class CollegeServiceImpl implements CollegeService {
 
     @Override
     public List teamList(Map<String, Object> param) {
+        Object parent_id_init = param.get("grade_id");
         Object specialty_parent_id =  param.get("specialty_parent_id");
         Object department =  param.get("department");
         List list1 = new ArrayList();
@@ -130,14 +131,16 @@ public class CollegeServiceImpl implements CollegeService {
                     lsMap2.put("grade_name",grade_name);
                     list3.add(0,lsMap2);
                 }else{
-                    list3 = collegeMapper.gradeList2(param);
+//                    list3 = collegeMapper.gradeList2(param);
+                    list3 = collegeMapper.gradeList(param);
                 }
                 List threeMenu = new ArrayList<>();
                 for(int b=0;b<list3.size();b++){
                     Map map3 = (Map) list3.get(b);
                     Map resultMap3 = new HashMap();
-                    param.put("grade_id",map3.get("grade_id"));
+                    param.put("grade_id",map3.get("id"));
                     List list4 = collegeMapper.teamList(param);
+                    param.put("grade_id",parent_id_init);  //每次查询完  恢复成查询条件
                     resultMap3.put("mainMenu",map3);
                     resultMap3.put("sonMenu",list4);
                     threeMenu.add(b,resultMap3);

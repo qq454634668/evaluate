@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@Transactional
+//@Transactional
 public class StudentServiceImpl implements StudentService {
 
     @Resource
@@ -82,7 +82,7 @@ public class StudentServiceImpl implements StudentService {
         double Dscore = Double.parseDouble(score);
         double DThreeWeight = Double.parseDouble(ThreeWeight);
         double ThreeScore = Dscore*DThreeWeight/100;
-        Object ThreeParent_id = ThreeMap.get("parent_id");
+        Object ThreeParent_id = ThreeMap.get("id");
         param.put("score",ThreeScore);
         param.put("criterion_id",ThreeParent_id);
         List exist = studentMapper.existCriterion(param);
@@ -101,7 +101,7 @@ public class StudentServiceImpl implements StudentService {
         String TwoWeight = TwoMap.get("weight").toString();
         double DTwoWeight = Double.parseDouble(TwoWeight);
         double TwoScore = ThreeScore*DTwoWeight/100;
-        Object TwoParent_id = TwoMap.get("parent_id");
+        Object TwoParent_id = TwoMap.get("id");
         param.put("score",TwoScore);
         param.put("criterion_id",TwoParent_id);
         exist = studentMapper.existCriterion(param);
@@ -120,7 +120,7 @@ public class StudentServiceImpl implements StudentService {
         String OneWeight = OneMap.get("weight").toString();
         double DOneWeight = Double.parseDouble(OneWeight);
         double OneScore = TwoScore*DOneWeight/100;
-        Object OneParent_id = OneMap.get("parent_id");
+        Object OneParent_id = OneMap.get("id");
         param.put("score",OneScore);
         param.put("criterion_id",OneParent_id);
         exist = studentMapper.existCriterion(param);

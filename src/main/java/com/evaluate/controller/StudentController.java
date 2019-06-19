@@ -224,7 +224,7 @@ public class StudentController {
             result.put("message","评分成功");
             result.put("code","200");
         }catch (Exception e){
-            result.put("data", null);
+            result.put("data", e.getMessage());
             result.put("message","评分失败");
             result.put("code","500");
         }
