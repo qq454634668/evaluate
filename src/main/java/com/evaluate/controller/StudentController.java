@@ -239,7 +239,7 @@ public class StudentController {
         try{
             param.put("student_id",request.getParameter("student_id"));
             param.put("term_id",request.getParameter("term_id"));
-            List list = studentService.quotaList(param);
+            List list = studentService.quotaList2(param);
             result.put("data",list);
             result.put("message","评分结果成功");
             result.put("code","200");

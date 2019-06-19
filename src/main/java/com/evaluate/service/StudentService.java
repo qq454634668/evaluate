@@ -19,4 +19,5 @@ public interface StudentService {
     void addScore(Map<String,Object> param);
     //指标列表
     List quotaList(Map<String, Object> param);
+    List quotaList2(Map<String, Object> param);
 }
