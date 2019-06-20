@@ -380,6 +380,7 @@ public class CollegeController {
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
+            param.put("term",request.getParameter("term"));
             collegeService.addTerm(param);
             result.put("data", null);
             result.put("message","增加学期成功");
@@ -393,6 +394,8 @@ public class CollegeController {
     }
     /**
      * 修改学期
+     * term
+     * id
      */
     @ResponseBody
     @RequestMapping("/college/editTerm")
@@ -400,6 +403,8 @@ public class CollegeController {
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
+            param.put("term",request.getParameter("term"));
+            param.put("id",request.getParameter("id"));
             collegeService.editTerm(param);
             result.put("data", null);
             result.put("message","修改学期成功");
@@ -413,6 +418,7 @@ public class CollegeController {
     }
     /**
      * 删除学期
+     * id
      */
     @ResponseBody
     @RequestMapping("/college/delTerm")
@@ -420,6 +426,7 @@ public class CollegeController {
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
+            param.put("id",request.getParameter("id"));
             collegeService.delTerm(param);
             result.put("data", null);
             result.put("message","删除学期成功");
