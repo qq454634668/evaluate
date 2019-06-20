@@ -14,6 +14,7 @@ public interface DicMapper {
     List dicSpecialty(Map<String,Object> param);
     //选择班级
     List dicTeam(Map<String,Object> param);
+    List dicStu(Map<String,Object> param);
     //选择年级
     List dicRole(Map<String,Object> param);
 }

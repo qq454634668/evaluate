@@ -15,6 +15,8 @@ public interface DicService {
     List dicSpecialty(Map<String,Object> param);
     //选择班级
     List dicTeam(Map<String,Object> param);
+    //选择学生
+    List dicStu(Map<String,Object> param);
     //选择角色
     List dicRole(Map<String,Object> param);
 }

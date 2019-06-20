@@ -47,6 +47,11 @@ public class DicServiceImpl implements DicService {
     }
 
     @Override
+    public List dicStu(Map<String, Object> param) {
+        return dicMapper.dicStu(param);
+    }
+
+    @Override
     public List dicRole(Map<String, Object> param) {
         return dicMapper.dicRole(param);
     }
