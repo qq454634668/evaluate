@@ -41,7 +41,7 @@ license:
   keyStorePwd: kaifa123
   #证书路径
   #license.licName=/home/matrix/IdeaProjects/hostelManage/license/kaifalicense.lic
-  licName: ./license/kaifalicense.lic
+  licName: /license/kaifalicense.lic
   #公共库路径
   pubPath: /license/kaifaPublicCert.store
   #项目识别码
