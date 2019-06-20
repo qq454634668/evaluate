@@ -9,9 +9,10 @@
         <result column="SCORE" property="score"/>
         <result column="ID" property="id"/>
         <result column="NAME" property="name"/>
+        <result column="SUM" property="sum"/>
     </resultMap>
     <select id="sorceList" parameterType="java.util.Map" resultMap="mb">
-        select sum(t1.score),t1.criterion_id id,t2.name from
+        select sum(t1.score) sum,t1.criterion_id id,t2.name from
         (select id criterionId,t.name from yuyi_evaluate_criterion t where t.parent_id=#{parent_id}) t2 left join
         (select b.score,b.criterion_id from yuyi_evaluate_student a,yuyi_evaluate_score b
                         <where>
@@ -20,7 +21,7 @@
                                 and  a.department_id = #{kx}
                              </if>
                              <if test="zy!=null and zy!=''">
-                                and  a.specialty = #{zy}
+                                and  a.specialty_id = #{zy}
                              </if>
                              <if test="bj!=null and bj!=''">
                                 and  a.team_id = #{bj}
