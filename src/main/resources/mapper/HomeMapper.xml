@@ -25,8 +25,8 @@
                              <if test="bj!=null and bj!=''">
                                 and  a.team_id = #{bj}
                              </if>
-                             <if test="stu!=null and stu!=''">
-                                and  a.id = #{stu}
+                             <if test="xs!=null and xs!=''">
+                                and  a.id = #{xs}
                              </if>
                              <if test="xq!=null and xq!=''">
                                 and  b.term_id = #{xq}

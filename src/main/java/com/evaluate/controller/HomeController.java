@@ -31,7 +31,7 @@ public class HomeController {
      *
      * kx  选择科系   必选
      * zy  选择专业
-     * stu 选择学生
+     * xs 选择学生
      * bj  选择所在班级
      * xq  选择学期   必选
      * id   默认是0   这个分开传，不放到JSON串里   criterion字典ID

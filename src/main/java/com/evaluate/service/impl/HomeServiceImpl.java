@@ -47,12 +47,12 @@ public class HomeServiceImpl implements HomeService {
             }else{
                 param.put("bj",bj);
             }
-            String stu = obj.getStu();
-            if(stu.equals(null) || stu.equals("")){
+            String xs = obj.getStu();
+            if(xs.equals(null) || xs.equals("")){
                 //进行班级比较
-                param.put("stu","");
+                param.put("xs","");
             }else{
-                param.put("stu",stu);
+                param.put("xs",xs);
             }
             List<Map<String,Object>> list = homeMapper.sorceList(param);
             resultList.add(list);
