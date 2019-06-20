@@ -125,6 +125,8 @@ public class SystemController {
      * password 密码
      * id
      */
+    @ResponseBody
+    @RequestMapping("/system/editUsersPas")
     public Map<String,Object> editUsersPas(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
@@ -149,6 +151,8 @@ public class SystemController {
      * role_id    权限ID
      * id
      */
+    @ResponseBody
+    @RequestMapping("/system/editUsersRole")
     public Map<String,Object> editUsersRole(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
@@ -171,6 +175,8 @@ public class SystemController {
      * 删除用户
      * id
      */
+    @ResponseBody
+    @RequestMapping("/system/delUsers")
     public Map<String,Object> delUsers(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
@@ -191,6 +197,8 @@ public class SystemController {
     /**
      * 角色列表
      */
+    @ResponseBody
+    @RequestMapping("/system/roleList")
     public Map<String,Object> roleList(HttpServletRequest request){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
