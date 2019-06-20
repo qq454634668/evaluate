@@ -48,7 +48,6 @@ public class HomeServiceImpl implements HomeService {
                 param.put("bj",bj);
             }
             String stu = obj.getStu();
-            stu="";
             if(stu.equals(null) || stu.equals("")){
                 //进行班级比较
                 param.put("stu","");
