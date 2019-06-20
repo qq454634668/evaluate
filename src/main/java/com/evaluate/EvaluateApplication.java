@@ -10,14 +10,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @MapperScan("com.evaluate.mapper")
-public class EvaluateApplication{
-//public class EvaluateApplication extends SpringBootServletInitializer {
+public class EvaluateApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(EvaluateApplication.class, args);
     }
-//    @Override
-//    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//        return application.sources(EvaluateApplication.class);
-//    }
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(EvaluateApplication.class);
+    }
 }
