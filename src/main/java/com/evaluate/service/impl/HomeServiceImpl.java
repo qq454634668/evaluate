@@ -25,6 +25,7 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public List<Map<String, Object>> makeTb(String data, String parent_id) {
         Map<String,Object> param = new HashMap<>();
+        param.put("parent_id",parent_id);
         List resultList = new ArrayList();
         List<Demo> demoList = JSON.parseArray(data,Demo.class);
         for(int i=0;i<demoList.size();i++){
@@ -33,21 +34,22 @@ public class HomeServiceImpl implements HomeService {
             param.put("kx",obj.getKx());
             param.put("xq",obj.getXq());
             String zy = obj.getZy();
-            if(zy==null || zy ==""){
+            if(zy.equals(null) || zy.equals("")){
                 //进行科系比较
                 param.put("zy","");
             }else{
                 param.put("zy",zy);
             }
             String bj = obj.getBj();
-            if(bj==null || bj ==""){
+            if(bj.equals(null) || bj.equals("")){
                 //进行专业比较
                 param.put("bj","");
             }else{
                 param.put("bj",bj);
             }
             String stu = obj.getStu();
-            if(stu==null || stu ==""){
+            stu="";
+            if(stu.equals(null) || stu.equals("")){
                 //进行班级比较
                 param.put("stu","");
             }else{
