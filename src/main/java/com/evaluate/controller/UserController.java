@@ -20,7 +20,7 @@ import java.util.Map;
 
 
 @Controller
-@CrossOrigin
+//@CrossOrigin
 public class UserController {
 
     @Resource
@@ -37,15 +37,14 @@ public class UserController {
      */
     @RequestMapping("/user/login")
     @ResponseBody
-    public Map<String,Object> login(HttpSession session,
-                                    @RequestParam String username,
-                                    @RequestParam String password){
+    public Map<String,Object> login(HttpSession session,HttpServletRequest request
+                                    ){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> map = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
-            param.put("username",username);
-            param.put("password",password);
+            param.put("username",request.getParameter("username"));
+            param.put("password",request.getParameter("password"));
             List<Map<String,Object>> userInfo = userService.user(param);
             if(userInfo.size()>0){
                 Map a = userInfo.get(0);

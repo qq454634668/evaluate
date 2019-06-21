@@ -52,6 +52,7 @@ public class LicenseVertify {
 
 		try
 		{
+			System.out.println(licName);
 			LicenseManager licenseManager=getLicenseManager();
 			licenseManager.install(new File(licName));
 			System.out.println("安装证书成功!");

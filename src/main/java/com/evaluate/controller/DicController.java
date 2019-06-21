@@ -18,7 +18,7 @@ import java.util.Map;
  * 字典
  */
 @Controller
-@CrossOrigin
+//@CrossOrigin
 public class DicController {
 
     @Resource
