@@ -19,7 +19,7 @@ import java.util.Map;
  * 学生管理
  */
 @Controller
-//@CrossOrigin
+@CrossOrigin
 public class StudentController {
 
     @Resource

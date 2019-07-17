@@ -17,7 +17,7 @@ import java.util.Map;
  * 指标管理
  */
 @Controller
-//@CrossOrigin
+@CrossOrigin
 public class QuotaController {
 
     @Resource

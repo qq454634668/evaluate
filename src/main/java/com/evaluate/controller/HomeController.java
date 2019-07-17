@@ -18,7 +18,7 @@ import java.util.Map;
  * 首页
  */
 @Controller
-//@CrossOrigin
+@CrossOrigin
 public class HomeController {
 
     @Resource

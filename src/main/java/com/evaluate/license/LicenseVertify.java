@@ -94,9 +94,9 @@ public class LicenseVertify {
 	{
 		try
 		{
-			LicenseManager licenseManager=getLicenseManager();
+//			LicenseManager licenseManager=getLicenseManager();
 			licenseManager.verify();
-			System.out.println("验证证书成功!");
+//			System.out.println("验证证书成功!");
 			return 0;
 		}
 		catch(LicenseContentException ex)
