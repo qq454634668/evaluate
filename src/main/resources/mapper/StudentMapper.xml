@@ -146,4 +146,7 @@
                                                    and student_id =#{student_id}
                                                    and term_id=#{term_id}
     </select>
+    <select id="scoreXqList" parameterType="java.util.Map"  resultMap="socreMap">
+       select id,student_id,term_id,criterion_id,score from yuyi_evaluate_score where criterion_id = #{id}
+    </select>
 </mapper>

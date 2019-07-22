@@ -255,5 +255,26 @@ public class StudentController {
         }
         return result;
     }
-
+    /**
+     * 评分详情列表（最后一级别评分项，点击列出所有投票详情）
+     * id  评分项ID
+     */
+    @ResponseBody
+    @RequestMapping("/stu/scoreXqList")
+    public Map<String,Object> scoreXqList(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("id",request.getParameter("id"));
+            List list = studentService.scoreXqList(param);
+            result.put("data",list);
+            result.put("message","评分详情列表成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("data", null);
+            result.put("message","评分详情列表失败");
+            result.put("code","500");
+        }
+        return result;
+    }
 }

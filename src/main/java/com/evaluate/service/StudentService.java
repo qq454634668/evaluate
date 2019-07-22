@@ -20,4 +20,5 @@ public interface StudentService {
     //指标列表
     List quotaList(Map<String, Object> param);
     List quotaList2(Map<String, Object> param);
+    List scoreXqList(Map<String, Object> param);
 }

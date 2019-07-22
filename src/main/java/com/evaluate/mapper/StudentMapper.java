@@ -30,4 +30,5 @@ public interface StudentMapper {
     List<Map<String,Object>> quotaList2(Map<String,Object> param);
     //判断该Criterion_id和该学生是否有数据
     List<Map<String,Object>> existCriterion(Map<String,Object> param);
+    List<Map<String,Object>> scoreXqList(Map<String,Object> param);
 }
