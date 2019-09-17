@@ -22,6 +22,7 @@
         <result column="ORIGIN" property="origin"/>
         <result column="NATION" property="nation"/>
         <result column="CARD" property="card"/>
+        <result column="PASSWORD" property="password"/>
     </resultMap>
     <resultMap id="socreMap" type="java.util.Map">
         <result column="ID" property="id"/>
@@ -48,7 +49,7 @@
             (select b.grade from yuyi_evaluate_grade b where b.id = t.grade_id) grade,
             (select c.department from yuyi_evaluate_department c where c.id = t.department_id) department,
             (select d.specialty from yuyi_evaluate_specialty d where d.id = t.specialty_id) specialty,
-            t.grade_id,t.department_id,t.specialty_id,t.team_id,card,nation
+            t.grade_id,t.department_id,t.specialty_id,t.team_id,card,nation,password
               from yuyi_evaluate_student t
               <where>
                   <if test="grade_id!=null and grade_id !=''">
