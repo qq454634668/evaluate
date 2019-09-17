@@ -21,8 +21,10 @@
                 t.role_id
 	          from yuyi_evaluate_users t where login =#{username} and password =#{password}
     </select>
-    <select id="getUserInfoId" parameterType="java.util.Map" resultMap="tokenList">
-          select * from token t where t.token =#{token}
+    <select id="getUserInfoId" parameterType="java.util.Map" resultMap="UserList">
+          select t1.* from token t,yuyi_evaluate_users t1 where
+            t.token =#{token}
+            and t1.id = t.user_id
     </select>
     <insert id="insertToken" parameterType="java.util.Map">
         insert into token (token,scsj,user_id) values (#{token},#{scsj},#{user_id})
