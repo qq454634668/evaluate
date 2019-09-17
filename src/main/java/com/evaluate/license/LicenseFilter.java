@@ -41,12 +41,12 @@ public class LicenseFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		boolean init = licenseVertify.setParam();
-		if(init){
-			System.out.println("过滤器初始化成功");
-		}else{
-			throw new ServletException();
-		}
+//		boolean init = licenseVertify.setParam();
+//		if(init){
+//			System.out.println("过滤器初始化成功");
+//		}else{
+//			throw new ServletException();
+//		}
 
 	}
 
