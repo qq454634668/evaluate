@@ -59,7 +59,8 @@ public class UserController {
                     param.put("user_id",a.get("id"));
                     userService.insertToken(param);
                     userService.updateLastTime(param);   //更新最后登录时间
-                    result.put("data",token);
+                    result.put("data",a);
+                    result.put("token",token);
                     result.put("message","登录成功");
                     result.put("code","200");
                 }else{
