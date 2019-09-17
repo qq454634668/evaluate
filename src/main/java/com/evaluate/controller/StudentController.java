@@ -228,8 +228,9 @@ public class StudentController {
             List<Map<String,Object>> userList= userService.getUserInfoId(param);
             if(userList.size()!=0){
                 Map<String,Object> lsMap = userList.get(0);
-                String role_id = (String) lsMap.get("role_id");
-                if(role_id.equals("6")){
+                Long role_id = (Long) lsMap.get("role_id");
+
+                if(role_id==6){
                     //role_id权限等于6是班主任
                     List stuList= studentService.pdStuTer(param);
                     if(stuList.size()>0){
