@@ -109,6 +109,7 @@
             <artifactId>truelicense-core</artifactId>
             <version>1.33</version>
         </dependency>
+
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
