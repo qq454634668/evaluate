@@ -46,6 +46,9 @@ public class SystemController {
             Map<String,Object> param = new HashMap<>();
             List<Map<String,Object>> list=new ArrayList<>();
             try{
+                param.put("role_id",request.getParameter("role_id"));
+                param.put("kssj",request.getParameter("kssj"));
+                param.put("jssj",request.getParameter("jssj"));
                 list = systemService.usersList(param,pageNum,pageSize);
                 PageInfo<Map<String,Object>> pageList = new PageInfo<>(list);
                 result.put("data",pageList);
