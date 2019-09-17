@@ -31,4 +31,6 @@ public interface StudentMapper {
     //判断该Criterion_id和该学生是否有数据
     List<Map<String,Object>> existCriterion(Map<String,Object> param);
     List<Map<String,Object>> scoreXqList(Map<String,Object> param);
+    //判断学生和老师是否是同一班级，list大于0是同一班级，等于0不同一班级
+    List<Map<String,Object>> pdStuTer(Map<String,Object> param);
 }

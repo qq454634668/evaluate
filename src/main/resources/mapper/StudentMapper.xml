@@ -149,4 +149,14 @@
     <select id="scoreXqList" parameterType="java.util.Map"  resultMap="socreMap">
        select id,student_id,term_id,criterion_id,score from yuyi_evaluate_score where criterion_id = #{id}
     </select>
+    <select id="pdStuTer" parameterType="java.util.Map"  resultMap="stuMap">
+       SELECT
+            t1.*, t2.teacher_id
+        FROM
+            yuyi_evaluate_student t1,
+            yuyi_evaluate_team t2
+        WHERE
+            t1.id = #{student_id}
+        AND t1.team_id = t2.id and t2.teacher_id in (select user_id from token t where t.token = #{token})
+    </select>
 </mapper>

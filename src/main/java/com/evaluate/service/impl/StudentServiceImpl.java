@@ -256,4 +256,9 @@ public class StudentServiceImpl implements StudentService {
     public List scoreXqList(Map<String, Object> param) {
         return studentMapper.scoreXqList(param);
     }
+
+    @Override
+    public List pdStuTer(Map<String, Object> param) {
+        return studentMapper.pdStuTer(param);
+    }
 }
