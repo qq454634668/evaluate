@@ -37,15 +37,14 @@ public class UserController {
      */
     @RequestMapping("/user/login")
     @ResponseBody
-    public Map<String,Object> login(HttpSession session,
-                                    @RequestParam String username,
-                                    @RequestParam String password){
+    public Map<String,Object> login(HttpSession session,HttpServletRequest request
+                                    ){
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> map = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
-            param.put("username",username);
-            param.put("password",password);
+            param.put("username",request.getParameter("username"));
+            param.put("password",request.getParameter("password"));
             List<Map<String,Object>> userInfo = userService.user(param);
             if(userInfo.size()>0){
                 Map a = userInfo.get(0);
@@ -60,7 +59,8 @@ public class UserController {
                     param.put("user_id",a.get("id"));
                     userService.insertToken(param);
                     userService.updateLastTime(param);   //更新最后登录时间
-                    result.put("data",token);
+                    result.put("data",a);
+                    result.put("token",token);
                     result.put("message","登录成功");
                     result.put("code","200");
                 }else{

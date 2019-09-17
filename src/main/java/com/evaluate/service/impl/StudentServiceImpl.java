@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-//@Transactional
+@Transactional
 public class StudentServiceImpl implements StudentService {
 
     @Resource
@@ -250,5 +250,15 @@ public class StudentServiceImpl implements StudentService {
         }
 
         return oneMenu;
+    }
+
+    @Override
+    public List scoreXqList(Map<String, Object> param) {
+        return studentMapper.scoreXqList(param);
+    }
+
+    @Override
+    public List pdStuTer(Map<String, Object> param) {
+        return studentMapper.pdStuTer(param);
     }
 }

@@ -1,12 +1,14 @@
 package com.evaluate.controller;
 
 import com.evaluate.service.StudentService;
+import com.evaluate.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.security.krb5.internal.PAData;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,8 @@ public class StudentController {
 
     @Resource
     private StudentService studentService;
+    @Resource
+    private UserService userService;
 
 
     /**
@@ -208,6 +212,8 @@ public class StudentController {
         Map<String,Object> result = new HashMap<>();
         Map<String,Object> param = new HashMap<>();
         try{
+            String token = request.getHeader("token");
+            param.put("token",request.getParameter("token"));
             param.put("student_id",request.getParameter("student_id"));
             param.put("term_id",request.getParameter("term_id"));
             param.put("criterion_id",request.getParameter("criterion_id"));
@@ -219,10 +225,38 @@ public class StudentController {
             }else{
                 param.put("bz",bz);
             }
-            studentService.addScore(param);
-            result.put("data",null);
-            result.put("message","评分成功");
-            result.put("code","200");
+            List<Map<String,Object>> userList= userService.getUserInfoId(param);
+            if(userList.size()!=0){
+                Map<String,Object> lsMap = userList.get(0);
+                String role_id = (String) lsMap.get("role_id");
+                if(role_id.equals("6")){
+                    //role_id权限等于6是班主任
+                    List stuList= studentService.pdStuTer(param);
+                    if(stuList.size()>0){
+                        //是该学生班主任可以评分
+                        studentService.addScore(param);
+                        result.put("data",null);
+                        result.put("message","评分成功");
+                        result.put("code","200");
+                    }else{
+                        //不是该学生班主任可以评分
+                        result.put("data",null);
+                        result.put("message","不是该学生班主任,不可以进行评分");
+                        result.put("code","202");
+                    }
+                }else{
+                    //不是班主任，暂时默认就是管理员什么操作也不用做，直接加分
+                    studentService.addScore(param);
+                    result.put("data",null);
+                    result.put("message","评分成功");
+                    result.put("code","200");
+                }
+            }else{
+                result.put("data",null);
+                result.put("message","用户登录信息不存在,请重新登录");
+                result.put("code","201");
+            }
+
         }catch (Exception e){
             result.put("data", e.getMessage());
             result.put("message","评分失败");
@@ -255,5 +289,26 @@ public class StudentController {
         }
         return result;
     }
-
+    /**
+     * 评分详情列表（最后一级别评分项，点击列出所有投票详情）
+     * id  评分项ID
+     */
+    @ResponseBody
+    @RequestMapping("/stu/scoreXqList")
+    public Map<String,Object> scoreXqList(HttpServletRequest request){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        try{
+            param.put("id",request.getParameter("id"));
+            List list = studentService.scoreXqList(param);
+            result.put("data",list);
+            result.put("message","评分详情列表成功");
+            result.put("code","200");
+        }catch (Exception e){
+            result.put("data", null);
+            result.put("message","评分详情列表失败");
+            result.put("code","500");
+        }
+        return result;
+    }
 }

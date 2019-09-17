@@ -26,15 +26,15 @@ public class LicenseFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		int valid = licenseVertify.vertify();
-		
-		if(0==valid){
+//		int valid = licenseVertify.vertify();
+//
+//		if(0==valid){
 			chain.doFilter(request, response);
-		}else if(1==valid){//过期
-			request.getRequestDispatcher("overdue.jsp").forward(request,response);
-		}else if(2==valid){
-			throw new ServletException("证书错误");
-		}
+//		}else if(1==valid){//过期
+//			request.getRequestDispatcher("overdue.jsp").forward(request,response);
+//		}else if(2==valid){
+//			throw new ServletException("证书错误");
+//		}
 	}
 
 	/**
