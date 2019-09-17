@@ -213,7 +213,7 @@ public class StudentController {
         Map<String,Object> param = new HashMap<>();
         try{
             String token = request.getHeader("token");
-            param.put("token",request.getParameter("token"));
+            param.put("token",token);
             param.put("student_id",request.getParameter("student_id"));
             param.put("term_id",request.getParameter("term_id"));
             param.put("criterion_id",request.getParameter("criterion_id"));
