@@ -109,7 +109,7 @@ public class SystemController {
                 //图片为空，传一个空地址
                 param.put("url","");
             }
-            if (FileUtils.upload(file, path,login)){
+            if (FileUtils.upload(file, path,login+".jpg")){
                 systemService.addUsers(param);
                 result.put("data",null);
                 result.put("message","添加成功");
