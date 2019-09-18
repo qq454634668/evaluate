@@ -18,13 +18,13 @@ public class FileUtils {
      * @return
      */
     public static boolean upload(MultipartFile file, String path, String fileName){
-//        long size = file.getSize();
-//        float scale = 1.0f ;
-//        if(size >= 100*1024*10){
-//            if(size > 0){
-//                scale = (100*1024f*10) / size  ;
-//            }
-//        }
+        long size = file.getSize();
+        float scale = 1.0f ;
+        if(size >= 100*1024*10){
+            if(size > 0){
+                scale = (100*1024f*10) / size  ;
+            }
+        }
         // 生成新的文件名
         //String realPath = path + "/" + FileNameUtils.getFileName(fileName);
 
